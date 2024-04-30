@@ -1,0 +1,11 @@
+body {
+  background-color: beige;
+}
+
+h1 {
+  color: cornflowerblue;
+}
+
+.clicked {
+  color: tomato;
+}
