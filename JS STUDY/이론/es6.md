@@ -21,3 +21,32 @@
 
 <br/>
 <br/>
+
+# filter()
+
+- 배열을 순회하면서 조건에 맞는 배열값만 통과시켜서 새로운 배열로 반환한다.
+- map() 함수와는 다르게 데이터의 형태는 유지하면서 배열의 길이만 줄인다.
+<pre>
+<code>
+let users = [
+  { id: 11, name: 'Adam', age: 23, group: 'editor' },
+  { id: 47, name: 'John', age: 28, group: 'admin' },
+  { id: 85, name: 'William', age: 34, group: 'editor' },
+  { id: 97, name: 'Oliver', age: 28, group: 'admin' }
+];
+let res = users.filter(it => it.name.includes('oli'));
+console.log(res);
+// res is []
+</code>
+</pre>
+
+<br>
+
+# reduce
+
+- 배열을 줄여서 나가서 하나의 값을 만든다는 컨셉
+- let les = arr.reduce( (acc, val, idx) => {}, 초기값); -> 모양
+- 첫번째 인자는 초기값/누적값
+- 두번째 인자는 배열값을 순회하며 처리
+- 세번째 인자는 (idx) 인덱스값
+- 네번째 인자는 기존배열 그대로 보여줌
