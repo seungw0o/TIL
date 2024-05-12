@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 const h1 = document.querySelector(".sexy-font");
+=======
+const h1 = document.querySelector("div.hello:first-child h1");
+>>>>>>> 382fdd09deadbd6cb77e127fd68678e92e9e2bff
 
 function handleh1Click() {
   // if (h1.classList.contains(clickedClass)) {
