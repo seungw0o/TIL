@@ -1,4 +1,4 @@
-const h1 = document.querySelector("div.hello:first-child h1");
+const h1 = document.querySelector(".sexy-font");
 
 function handleh1Click() {
   // if (h1.classList.contains(clickedClass)) {
