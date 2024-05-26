@@ -6,27 +6,20 @@
   <!-- ReactJs는 interective의 원동력이라고 할 수 있다. --> 
   <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
   <!-- ReactDOM은 React element를 html로 바꾸는 역할을 한다. -->
-  <script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script> 
+  <!-- 우리가 쓴 코드를 브라우저가 이해 하게 해준다 -->
+  <script type="text/babel">
     const root = document.getElementById("root");
-    const h3 = React.createElement("h3", {
-      onMouseEnter: () => console.log("mouse enter"),
-      id: "title" // on이 eventListener 와 같은 역할을 함
-    }, "Hello I'm span");
-    const btn = React.createElement("button", {
-      onClick: () => console.log("im clicked"),
-      style: {
+    const Title = <h3 id="title" onMouseEnter={() => console.log("mouse enter")}>Hello I'm title</h3>
+    // on이 eventListener 와 같은 역할을 함
+    const Button = <button style={{
         backgroundColor:"tomato"
-      }
-    }, "Click me");
-<<<<<<< HEAD
-    const container = React.createElement("div", null, [h3, btn]) 
+      }} onClick={() => console.log("im clicked")}>Click me</button>
+    const container = React.createElement("div", null, [Title, Button]) 
     /* ("element", property, contents) 라고 할 수 있다.
     (태그 이름, 태그 속성, 태그 내용) 이라고 알면 쉽다.
     하지만 이 방법은 거의 쓰지 않기 때문에 딱히 공부할 이유가 없다, 그냥 기초인셈
     */
-=======
-    const container = React.createElement("div", null, [h3, btn])
->>>>>>> b022a3d26720ed41363c8a034acc8f48b1bf58ae
     ReactDOM.render(container, root);
   </script>
 </html>
