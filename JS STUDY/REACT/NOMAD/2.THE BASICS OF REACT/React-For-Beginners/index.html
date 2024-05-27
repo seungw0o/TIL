@@ -12,8 +12,8 @@
       function App() {
       const [counter, setCounter] = React.useState(0); // 배열에 접근하기 위해서는 data[0] 이런 식으로 접근해야 하지만, 앞의 방법을 쓴다면, counter = data[0]을 할 수 있다.
       const onClick = () => {
-        setCounter(counter + 1);
-      }
+        setCounter(counter + 1); // state가 바뀌면 rerendering이 일어난다. ReactJs는 똑똑하기 때문에, 우리가 바꾸는 값만 리렌더링할때 바꾼다.
+      };
       return ( 
         <div>
           <h3>Total cliks: {counter}</h3>
@@ -21,7 +21,7 @@
         </div>
       );
     }
-    
+    const root = document.getElementById("root");
     ReactDOM.render(<App/>, root);
   </script>
 </html>
