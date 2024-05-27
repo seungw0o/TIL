@@ -12,7 +12,10 @@
       function App() {
       const [counter, setCounter] = React.useState(0); // 배열에 접근하기 위해서는 data[0] 이런 식으로 접근해야 하지만, 앞의 방법을 쓴다면, counter = data[0]을 할 수 있다.
       const onClick = () => {
-        setCounter(counter + 1); // state가 바뀌면 rerendering이 일어난다. ReactJs는 똑똑하기 때문에, 우리가 바꾸는 값만 리렌더링할때 바꾼다.
+        // setCounter(counter + 1); // state가 바뀌면 rerendering이 일어난다. ReactJs는 똑똑하기 때문에, 우리가 바꾸는 값만 리렌더링할때 바꾼다.
+        setCounter((current) => current + 1); 
+        // 이렇게 함수를 쓰면 ReactJs는 current가 현재의 값이라는 것을 알기 때문에, 위에서 썼을때 보다 안전하다. 만약 위에서 쓴 counter 값이 어디선가 바뀌는 버그가 일어난다면 결과값이 바뀌기 때문.
+        
       };
       return ( 
         <div>
