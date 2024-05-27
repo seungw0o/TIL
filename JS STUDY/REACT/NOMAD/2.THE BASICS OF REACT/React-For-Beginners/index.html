@@ -10,11 +10,16 @@
   <!-- 우리가 쓴 코드를 브라우저가 이해 하게 해준다 -->
   <script type="text/babel">
       function App() {
-      const [minutes, setMinutes] = React.useState(0);
-      const reset = () => setMinutes(0);
+      const [amount, setAmount] = React.useState(0);
+      const [flipped, setFlipped] = React.useState(false);
+      const reset = () => setAmount(0);
+      const onFlip = () => {
+        reset();
+        setFlipped((current) => !current);
+      }
       const onChange = (event) => {
         // 이벤트를 읽을 수 있다. 이를 읽어서 input에 입력한 값을 찾을 수 있다.
-        setMinutes(event.target.value);
+        setAmount(event.target.value);
       };
       return ( 
         <div>
@@ -22,13 +27,14 @@
         {/* class는 js의 문법이고, for은 html의 문법이기 때문에 jsx에서는 className, htmlFor로 대체하여 사용한다. */}
         <div>
           <label htmlFor="minutes">Minutes</label>
-          <input value={minutes} type="number" placeholder="Minutes" id="minutes" onChange={onChange}/>
+          <input value={flipped ? amount*60 : amount} type="number" placeholder="Minutes" id="minutes" onChange={onChange} disabled={flipped} />
         </div>  
         <div>
           <label htmlFor="hours">Hours</label>
-          <input value={Math.round(minutes / 60)} type="number" placeholder="Hours" id="hours"/  >
+          <input value={flipped ? amount : Math.round(amount / 60)} type="number" placeholder="Hours" id="hours" onChange={onChange} disabled={!flipped}  />
         </div>
         <button onClick={reset}>Reset</button>
+        <button onClick={onFlip}>Flip</button>
         </div>
       );
     }
