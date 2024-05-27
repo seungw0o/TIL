@@ -9,19 +9,19 @@
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script> 
   <!-- 우리가 쓴 코드를 브라우저가 이해 하게 해준다 -->
   <script type="text/babel">
-    function render() {
-      ReactDOM.render(<App/>, root);
-    }
-    function App() {
-      const [counter, modifier] = React.useState(0); // 배열에 접근하기 위해서는 data[0] 이런 식으로 접근해야 하지만, 앞의 방법을 쓴다면, counter = data[0]을 할 수 있다.
+      function App() {
+      const [counter, setCounter] = React.useState(0); // 배열에 접근하기 위해서는 data[0] 이런 식으로 접근해야 하지만, 앞의 방법을 쓴다면, counter = data[0]을 할 수 있다.
+      const onClick = () => {
+        setCounter(counter + 1);
+      }
       return ( 
         <div>
-          <h3>Total cliks: 0</h3>
-          <button>Click me</button> 
+          <h3>Total cliks: {counter}</h3>
+          <button onClick={onClick}>Click me</button> 
         </div>
       );
     }
     
-    render();
+    ReactDOM.render(<App/>, root);
   </script>
 </html>
