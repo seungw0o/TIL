@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>서버에 요청을 보내자, 폼!</title>
+  </head>
+  <body>
+    <h1>키우고 싶은 동물 고르기</h1>
+    <form action="exam.php" method="post">
+      <input type="text" placeholder="name" name="name" />
+      <!-- placeholder : 아무것도 입력 안했을때 뜨는 창 -->
+      <br />
+      <select name="pet">
+        <option value="dog">강아지</option>
+        <option value="cat">고양이</option>
+        <option value="parrot">앵무새</option>
+      </select>
+      <br />
+      <input type="submit" value="전송" />
+    </form>
+  </body>
+</html>
