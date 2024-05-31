@@ -2,12 +2,13 @@
   <body>
     <div id="root"></div>
   </body>
-  <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
   <!-- ReactJs는 interective의 원동력이라고 할 수 있다. --> 
   <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
   <!-- ReactDOM은 React element를 html로 바꾸는 역할을 한다. -->
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script> 
   <!-- 우리가 쓴 코드를 브라우저가 이해 하게 해준다 -->
+  <script src="https://unpkg.com/prop-types@15.7.2/prop-types.js  "></script>
   <script type="text/babel">
     function MinutesToHours() {
         const [amount, setAmount] = React.useState(0);
@@ -64,29 +65,29 @@
           <button onClick={onFlip}>{inverted ? "Turn Back" : "Invert"}</button>
           </div>
         );    }
-    function Btn({name, changeValue}){
+    function Btn({name, fontSize = 16}){ // js 기본 문법으로 props로 전송된 값이 없는 경우 기본값을 정해 줄 수 있다.
       return <button
-      onClick={changeValue} 
       style={{
         backgroundColor:"tomato",
         color:"white",
         padding:"10px 20px",
         borderRadius: 10,
         border:0,
-
+        fontSize, 
       }}>{name}</button>;
     }
     function ConfirmBtn(){
       return <button>Confirm</button>;
     }    
-    const MemorizedBtn = React.memo(Btn) // state가 바뀌는지 안 바뀌는지 확인한다. 바뀌었을때만, 리렌더링 하기 위함
+    Btn.propTypes = {
+      name: PropTypes.string.isRequired, 
+      fontSize: PropTypes.number, 
+    }
     function App() {
-       const [value, setValue] = React.useState("Save Changes");
-       const changeValue = () => setValue("Revert Changes ");
         return (
           <div>
-            <MemorizedBtn name={value} changeValue={changeValue}/> {/*여기에 쓴 onClick이나 style을 써도, 작동하지 않는다. 그저 보내는 props에 불과하다.*/}
-            <MemorizedBtn name="Continue" />
+           <Btn name="Save Changes" fontSize={18}/>
+           <Btn  name={"Continue"}/>
           </div>
         );
     }
