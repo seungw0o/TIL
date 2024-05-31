@@ -64,25 +64,29 @@
           <button onClick={onFlip}>{inverted ? "Turn Back" : "Invert"}</button>
           </div>
         );    }
-    function Btn({name, big}){
-      return <button style={{
+    function Btn({name, changeValue}){
+      return <button
+      onClick={changeValue} 
+      style={{
         backgroundColor:"tomato",
         color:"white",
         padding:"10px 20px",
         borderRadius: 10,
         border:0,
-        fontSize: big ? 18 : 16
+
       }}>{name}</button>;
     }
     function ConfirmBtn(){
       return <button>Confirm</button>;
     }    
+    const MemorizedBtn = React.memo(Btn) // state가 바뀌는지 안 바뀌는지 확인한다. 바뀌었을때만, 리렌더링 하기 위함
     function App() {
-       
+       const [value, setValue] = React.useState("Save Changes");
+       const changeValue = () => setValue("Revert Changes ");
         return (
           <div>
-            <Btn name="Save Changes" big={true}/>
-            <Btn name="Continue" big={false}/>
+            <MemorizedBtn name={value} changeValue={changeValue}/> {/*여기에 쓴 onClick이나 style을 써도, 작동하지 않는다. 그저 보내는 props에 불과하다.*/}
+            <MemorizedBtn name="Continue" />
           </div>
         );
     }
