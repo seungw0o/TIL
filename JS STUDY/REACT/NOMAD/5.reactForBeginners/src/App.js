@@ -7,7 +7,7 @@ function App() {
   const onChange = event => setKeyword(event.target.value);
   useEffect(() => {
     console.log("I run only once.");
-  }, []);
+  }, []); // []안에 아무것도 없기 때문에 react가 지켜볼 값이 아무것도 없어서 한번만 실행된다.
   useEffect(() => {
     console.log("I run when 'keyword' changes. ");
   }, [keyword]);
