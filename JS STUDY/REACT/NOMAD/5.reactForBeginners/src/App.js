@@ -1,32 +1,34 @@
+import { func } from "prop-types";
 import { useState, useEffect } from "react";
 
+function Hello() {
+  function byFn() {
+    console.log("bye");
+  }
+  function hiFn() {
+    console.log("created");
+    return byFn;
+  }
+  useEffect(() => {
+    console.log("hi");
+    return () => console.log("bye");
+  }, []);
+  useEffect(function () {
+    console.log("hi");
+    return function () {
+      console.log("by");
+    };
+  }, []);
+  return <h1>Hello</h1>;
+}
+
 function App() {
-  const [counter, setValue] = useState(0);
-  const [keyword, setKeyword] = useState("");
-  const onClick = () => setValue(prev => prev + 1);
-  const onChange = event => setKeyword(event.target.value);
-  useEffect(() => {
-    console.log("I run only once.");
-  }, []); // []안에 아무것도 없기 때문에 react가 지켜볼 값이 아무것도 없어서 한번만 실행된다.
-  useEffect(() => {
-    console.log("I run when 'keyword' changes. ");
-  }, [keyword]);
-  useEffect(() => {
-    console.log("I run when 'counter' changes. ");
-  }, [counter]);
-  useEffect(() => {
-    console.log("I run when 'keyword' & 'counter' changes. ");
-  }, [keyword, counter]);
+  const [Hide, setHide] = useState(false);
+  const onClick = () => setHide(prev => !prev);
   return (
     <div>
-      <input
-        value={keyword}
-        onChange={onChange}
-        type="text"
-        placeholder="Search here"
-      />
-      <h1>{counter}</h1>
-      <button onClick={onClick}>click me</button>
+      {Hide ? <Hello /> : null}
+      <button onClick={onClick}>{Hide ? "Hide" : "Show"}</button>
     </div>
   );
 }
