@@ -1,34 +1,29 @@
-import { func } from "prop-types";
-import { useState, useEffect } from "react";
-
-function Hello() {
-  function byFn() {
-    console.log("bye");
-  }
-  function hiFn() {
-    console.log("created");
-    return byFn;
-  }
-  useEffect(() => {
-    console.log("hi");
-    return () => console.log("bye");
-  }, []);
-  useEffect(function () {
-    console.log("hi");
-    return function () {
-      console.log("by");
-    };
-  }, []);
-  return <h1>Hello</h1>;
-}
+import { useState } from "react";
 
 function App() {
-  const [Hide, setHide] = useState(false);
-  const onClick = () => setHide(prev => !prev);
+  const [toDo, setToDo] = useState("");
+  const [toDos, setToDos] = useState([]);
+  const onChange = event => setToDo(event.target.value);
+  const onSubmit = event => {
+    event.preventDefault();
+    if (toDo === "") {
+      return;
+    }
+    setToDos(currnetArray => [toDo, ...currnetArray]);
+    setToDo("");
+  };
   return (
     <div>
-      {Hide ? <Hello /> : null}
-      <button onClick={onClick}>{Hide ? "Hide" : "Show"}</button>
+      <h1>My To Dos ({toDos.length})</h1>
+      <form onSubmit={onSubmit}>
+        <input
+          onChange={onChange}
+          value={toDo}
+          type="text"
+          placeholder="Write your to do"
+        />
+        <button>Add To Do</button>
+      </form>
     </div>
   );
 }
