@@ -115,7 +115,7 @@
   export default App;
   ```
 
-- class name을 설정 해야 한다면, "class ="가 아닌, "className ="으로 설정을 해야한다.
+- class name을 설정 해야 한다면, "class="가 아닌, "className ="으로 설정을 해야한다.
 
 ### 주석
 
