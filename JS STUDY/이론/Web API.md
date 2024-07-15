@@ -52,8 +52,8 @@ field.addEventListener("change", function () {
 
 ## cokie
 
-<a href="https://github.com/seungw0o/TIL/blob/main/JS%20STUDY/%EC%9D%B4%EB%A1%A0/Cookie.md"> Cookie.md
+<a href="https://github.com/seungw0o/TIL/blob/main/JS%20STUDY/%EC%9D%B4%EB%A1%A0/Cookie.md"> Cookie.md </a>
 
 ## token
 
-- ***
+-
