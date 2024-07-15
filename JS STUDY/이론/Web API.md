@@ -52,7 +52,7 @@ field.addEventListener("change", function () {
 
 ## cokie
 
-- 일정 시간 후 정보가 사라짐
+<a href="https://github.com/seungw0o/TIL/blob/main/JS%20STUDY/%EC%9D%B4%EB%A1%A0/Cookie.md"> Cookie.md
 
 ## token
 
