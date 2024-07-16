@@ -3,14 +3,17 @@
 ## Local storage
 
 - 정보가 계속 유지된다.
+- 데이터가 만료되지 않는다.
 
-  ```jsx
-  localstorage.setItem("key", "value"); // value는 string이여야 함
-  //setItem은 등록을 getItem은 읽는 것을 담당함
-  localstorage.getItem("key");
-  localstorage.removeItem("key"); //제거를 담당
-  localstorage.clear(); //전체 제거
-  ```
+### 예제
+
+```jsx
+localstorage.setItem("key", "value"); // value는 string이여야 함
+//setItem은 등록을 getItem은 읽는 것을 담당함
+localstorage.getItem("key");
+localstorage.removeItem("key"); //제거를 담당
+localstorage.clear(); //전체 제거
+```
 
 ## Session storage
 
