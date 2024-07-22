@@ -5,15 +5,15 @@
 - 정보가 계속 유지된다.
 - 데이터가 만료되지 않는다.
 
-### 예제
+  ### 예제
 
-```jsx
-localstorage.setItem("key", "value"); // value는 string이여야 함
-//setItem은 등록을 getItem은 읽는 것을 담당함
-localstorage.getItem("key");
-localstorage.removeItem("key"); //제거를 담당
-localstorage.clear(); //전체 제거
-```
+  ```jsx
+  localstorage.setItem("key", "value"); // value는 string이여야 함
+  //setItem은 등록을 getItem은 읽는 것을 담당함
+  localstorage.getItem("key");
+  localstorage.removeItem("key"); //제거를 담당
+  localstorage.clear(); //전체 제거
+  ```
 
 ## Session storage
 
@@ -26,32 +26,32 @@ localstorage.clear(); //전체 제거
 
 - sessionStorage에 저장한 자료는 페이지 프로토콜별로 구분합니다. 특히 HTTP로 방문한 페이지에서 저장한 데이터는 같은 페이지의 HTTPS와는 다른 sessionStorage에 저장된다.
 
-### 예제
+  ### 예제
 
-```jsx
-// sessionStorage 객체에 접근 후, Storag.setItem()을 사용해 항목 하나를 추가한다.
-sessionStorage.setItem("myCat", "Tom");
-```
+  ```jsx
+  // sessionStorage 객체에 접근 후, Storag.setItem()을 사용해 항목 하나를 추가한다.
+  sessionStorage.setItem("myCat", "Tom");
+  ```
 
-```jsx
-// 텍스트 필드의 문자을 자동 저장하여 브라우저가 의도치 않게 재시작 되었을 경우 자동으로 텍스트 필드에 저장된 내용을 저장된 문장으로 복구하여 작성한 내용이 사라지지 않게 한다.
+  ```jsx
+  // 텍스트 필드의 문자을 자동 저장하여 브라우저가 의도치 않게 재시작 되었을 경우 자동으로 텍스트 필드에 저장된 내용을 저장된 문장으로 복구하여 작성한 내용이 사라지지 않게 한다.
 
-// 추적할 텍스트 입력 칸 가져오기
-let field = document.getElementById("field");
+  // 추적할 텍스트 입력 칸 가져오기
+  let field = document.getElementById("field");
 
-// 자동저장 값이 존재하는지 판별
-// (의도치 않게 페이지를 새로 불러올 경우에만 발생)
-if (sessionStorage.getItem("autosave")) {
-  // 입력 칸의 콘텐츠 복구
-  field.value = sessionStorage.getItem("autosave");
-}
+  // 자동저장 값이 존재하는지 판별
+  // (의도치 않게 페이지를 새로 불러올 경우에만 발생)
+  if (sessionStorage.getItem("autosave")) {
+    // 입력 칸의 콘텐츠 복구
+    field.value = sessionStorage.getItem("autosave");
+  }
 
-// 텍스트 입력 칸의 변화 수신
-field.addEventListener("change", function () {
-  // 결과를 세션에 저장
-  sessionStorage.setItem("autosave", field.value);
-});
-```
+  // 텍스트 입력 칸의 변화 수신
+  field.addEventListener("change", function () {
+    // 결과를 세션에 저장
+    sessionStorage.setItem("autosave", field.value);
+  });
+  ```
 
 ## cokie
 
@@ -59,4 +59,11 @@ field.addEventListener("change", function () {
 
 ## token
 
--
+- 클라이언트가 인증 정보를 보관하는 방법이다.
+- 세션 기반 인증을 사용할 때, 클라이언트에서 유저에 대한 젇보를 요청할 때마다, 해당 정보를 줘도 되는지에 대해 세션 값 일치 여부를 확인하였기 때문에, 매 시간 DB를 확인하고, 부담이 되어 토큰이 나타났다.
+- 토큰은 암호화를 하여 클라이언트에 저장하기 때문에, 안전하다
+
+  ### JWT (Json Web Token)
+
+  - 종류 : access token, refresh token이 있음.
+  - 권한을 보유 받으려면 acess token만 있으면 된다. 하지만 acess token이 해커에게 털리면 끝이기 때문에 acess token을 재발행 받을 수 있는 refresh token이 있다. acess token은 유효기간이 짧게 설정 되어 있어 일정 기간에 refresh 받아야 함
