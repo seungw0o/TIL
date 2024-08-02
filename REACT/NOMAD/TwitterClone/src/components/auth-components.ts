@@ -44,3 +44,14 @@ export const Switcher = styled.span`
     color: #1d9bf5;
   }
 `;
+
+export const ResetPassword = styled.button`
+  margin-top: 20px;
+  border-radius: 50px;
+  border: 0;
+  color: white;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 15px;
+  width: 350px;
+`;

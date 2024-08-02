@@ -1,4 +1,8 @@
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  sendPasswordResetEmail,
+  updateProfile,
+} from "firebase/auth";
 import { useState } from "react";
 import { auth } from "../firebase";
 import { useNavigate } from "react-router-dom";
@@ -33,6 +37,7 @@ export default function CreateAccount() {
       setEmail(value);
     }
   };
+
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError("");
@@ -95,9 +100,9 @@ export default function CreateAccount() {
       </Form>
       {error !== "" ? <Error>{error}</Error> : null}
       <Switcher>
-        Already have an account?
-        <Link to="/login">Log in &rarr;</Link>
+        Already have an account? <Link to="/login">Log in &rarr;</Link>
       </Switcher>
+
       <GithubButton />
     </Wrapper>
   );

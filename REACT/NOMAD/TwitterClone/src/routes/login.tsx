@@ -11,8 +11,10 @@ import {
   Form,
   Error,
   Switcher,
+  ResetPassword,
 } from "../components/auth-components";
 import GithubButton from "../components/github-btn";
+import { sendPasswordResetEmail } from "firebase/auth";
 
 export default function CreateAccount() {
   const navigate = useNavigate();
@@ -29,6 +31,9 @@ export default function CreateAccount() {
     } else if (name === "email") {
       setEmail(value);
     }
+  };
+  const onClick = () => {
+    sendPasswordResetEmail(auth, email);
   };
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -76,6 +81,9 @@ export default function CreateAccount() {
         Don't have an account?{" "}
         <Link to="/create-account">Create one &rarr;</Link>
       </Switcher>
+      <ResetPassword onClick={onClick}>
+        Forgot password? Reset password
+      </ResetPassword>
       <GithubButton />
     </Wrapper>
   );
