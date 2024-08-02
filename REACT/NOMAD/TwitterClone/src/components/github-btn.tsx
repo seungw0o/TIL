@@ -36,7 +36,7 @@ const Button = styled.span`
   gap: 5px;
   align-items: center;
   justify-content: center;
-  margin-top: 50px;
+  margin-top: 30px;
   cursor: pointer;
 `;
 const Logo = styled.img`

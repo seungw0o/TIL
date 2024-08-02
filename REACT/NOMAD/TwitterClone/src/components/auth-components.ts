@@ -53,5 +53,9 @@ export const ResetPassword = styled.button`
   background-color: transparent;
   cursor: pointer;
   font-size: 15px;
-  width: 350px;
+  width: 100%;
+  height: 35px;
+  &:hover {
+    background-color: gray;
+  }
 `;
