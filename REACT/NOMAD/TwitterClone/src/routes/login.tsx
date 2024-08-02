@@ -33,6 +33,9 @@ export default function CreateAccount() {
     }
   };
   const onClick = () => {
+    if (email === "") {
+      alert("email을 입력 해주세요");
+    }
     sendPasswordResetEmail(auth, email);
   };
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
