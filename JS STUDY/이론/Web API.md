@@ -53,10 +53,217 @@ field.addEventListener("change", function () {
 });
 ```
 
+## Session
+
+### 세션 기반 인증
+
+- 세션은 비밀번호 등 클라이언트의 정보를 쿠키가 아닌 서버에 저장하고, 관리한다.
+- 서버는 클라이언트의 로그인 요청에 대한 응답을 작성 할 때, 인증 정보는 서버에 저장하고, 클라이언트 식별자인 `JSESSIONID`를 쿠키에 담는다. 이후 클라이언트는 요청을 보낼 때마다 `JSESSIONID` 쿠키를 함께 보낸다. 그리하면 서버는 `JSESSIONID`의 유효성을 판별해 클라이언트를 식별한다.
+
+#### 장점
+
+- 서버가 클라이언트의 웹 브라우저에 의존하지 않아도 된다.
+- 쿠키를 포함한 요청이 외부에 노출되어도 세션 ID 자체는 유의미한 개인 정보를 담지 않는다.
+- 각 사용자마다 고유한 세션 ID가 발급되기 때문에, 요청이 들어올 때마다 회원 정보를 확인 할 필요가 없다
+
+#### 단점
+
+- 해커가 세션 ID를 중간에 탈취하여 클라이언트인 척 위장할 수 있다.
+- 서버에서 세션 저장소를 사용하기 때문에, 요청이 많아지면 서버에 부하가 생긴다.
+
 ## cokie
 
 <a href="https://github.com/seungw0o/TIL/blob/main/JS%20STUDY/%EC%9D%B4%EB%A1%A0/Cookie.md"> Cookie.md </a>
 
 ## token
 
--
+### JWT
+
+- Json Web Token의 약자로 Web에서 쓰이는 Json Token이다.
+- 인증에 필요한 정보들을 암호화 시킨 토큰이다.
+- 쿠키/세션 방식과 유사하게 `JWT 토큰(Access Token)`을 `HTTP 헤더에` 실어 서버가 클라를 식별한다.
+- JWT는 `Header`,`Payload`,`Signature`로 이루어져 있다.
+
+#### Header
+
+- `Header`는 `alg`와 `typ`를 가지고 있다. `alg`는 정보를 암호화할 해싱 알고리즘을, `typ`는 토큰의 타입을 지정한다.
+
+```jsx
+{
+	"alg": "HS256",
+	"typ": "JWT"
+}
+```
+
+#### Payload
+
+- `Payload`는 실제로 토큰에 담을 정보를 가지고 있다. 주로 `클라이언트 고유 ID`,`유효 기간` 등이 포함된다.
+- `Key-Value` 형식으로 이루어진 한 쌍의 정보를 `Claim`이라고 한다.
+
+```jsx
+{
+	"sub": "1234567890",
+	"name": "John Doe",
+	"iat": 1516230922
+}
+```
+
+#### Signature
+
+- `Signature`는 인코딩된 `Header`와 `Payload`를 더한 뒤, 비밀키로 해싱하여 생성한다.
+- `Header` 및 `Payload`는 단순 인코딩된 값이기 때문에 해커가 복호화 하고 조작할 수 있지만, `Signature`는 서버 측에서 관리하는 비밀키가 유출되지 않는 이상 복호화 할 수 없다.
+- 따라서 `Signature`는 토큰의 위변조 여부를 확인하는 데 사용된다.
+
+```jsx
+HMACSHA256(
+  base64UrlEncode(header) + "." + base64UrlEncode(payload),
+  secret_key
+);
+```
+
+#### 종류
+
+- refresh Token
+- access Token
+
+#### Access Token
+
+- Access Token은 보호된 정보에 접근할 수 있는 권한부여에 사용된다.
+  권한을 부여받는 데에는 Access Token만 있으면 된다. 하지만 해킹의 위험성이 있기 때문에, Access Token은 일정 기간이 지내면 만료 되어 버린다
+
+#### Refresh Token
+
+- Access Token이 만료될 때마다, Refresh Token이 Access Token을 재발급 해주는 역할을 한다. Access Token이 열쇠, Refresh Token이 열쇠 재발급 같은 개념이다.
+
+### Access Token, Refresh Token 발급 작성법
+
+```jsx
+const jwt = require("jsonwebtoken");
+
+//access 토큰 발급
+const accessToken = jwt.sign(payload, accessSecret, {
+  algorithm: "HS256",
+  expiresIn: "1h",
+});
+//refresh 토큰 발급
+const refreshToken = jwt.sign(payload, refreshSecret, {
+  algorithm: "HS256",
+  expiresIn: "14d",
+});
+//클라이언트에서 받았을 때 access token은 그냥 응답하고, refresh token은 cookie에 담아서 보내준다. cookie에 담을 때는 쿠키 옵션을 포함해줘서 보낸다.
+
+res
+  .status(200)
+  .send({ data: { accessToken: accessToken }, message: "ok" })
+  .end();
+
+res.cookie("refreshToken", refreshToken, {
+  domain: "localhost",
+  path: "/",
+  maxAge: 24 * 6 * 60 * 10000,
+  sameSite: "none",
+  httpOnly: true,
+  secure: true,
+});
+```
+
+### Token 기반 인증 절차
+
+<img src="https://velog.velcdn.com/images%2Fboo1996%2Fpost%2Fb8bcd2b7-4801-4d54-a373-33f4d4362d2a%2F%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%2C%202022-02-13%2012-52-01.png"/>
+
+- 클라이언트가 서버에게 로그인/비밀번호를 담아 로그인 요청을 보낸다.
+- 서버는 로그인/비밀번호가 일치하는지 확인하고, 클라이언트에게 보낼 Signature 된 토큰을 생성한다.
+
+  - Access Token과 Refresh Token을 모두 생성한다.
+  - 토큰에 담길 정보는 유저를 식별할 정보, 권한이 부여된 카테고리가 될 수 있다.
+  - 두 종류의 토큰이 같은 정보일 필요는 없다.
+
+    ```jsx
+    const jwt = require("jsonwebtoken");
+
+    //access 토큰 발급
+    const accessToken = jwt.sign(payload, accessSecret, {
+      algorithm: "HS256",
+      expiresIn: "1h",
+    });
+    const refreshToken = jwt.sign(payload, refreshSecret, {
+      algorithm: "HS256",
+      expiresIn: "14d",
+    });
+    ```
+
+  - 토큰을 클라이언트에게 보내주면, 클라이언트는 토큰을 저장한다
+
+    ```jsx
+    res
+      .status(200)
+      .send({ data: { accessToken: accessToken }, message: "ok" })
+      .end();
+
+
+      res.cookie('refreshToken', refreshToken, {
+      domain: 'localhost',
+      path: '/',
+      maxAge: 24 _ 6 _ 60 \* 10000,
+      sameSite: 'none',
+      httpOnly: true,
+      secure: true,
+      })
+
+    ```
+
+  - 클라이언트가 HTTP 헤더에 토큰을 담아 보낸다.
+
+    ```jsx
+    axios.get("https://localhost:4000/accesstokenrequest", {
+      //req.headers
+      withCredentials: true,
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${this.props.accessToken}`,
+      },
+    });
+    ```
+
+  - 서버가 토큰을 해독하여 서버에서 보내준 토큰이 맞다는 판단이 될 경우, 클라이언트의 요청을 처리한 후 응답을 보내준다.
+
+    ```jsx
+    const authorization = req.headers.authorization
+    if (!authorization) {
+    res.status(400).send({ data: null, message: 'invalid access token' })
+    } else {
+    const token = authorization.split(' ')[1]
+    console.log('token=========>', token, typeof (token))
+    //토큰에 유저 정보가 있다면 유저정보를 비동기로 가져와서 주어진 형식에 맞게 응답한다.
+    jwt.verify(token, accessSecret, async (err, data) => {
+      const UserData = await Users.findOne({
+        where: { userId: data.userId }
+      })
+      console.log('UserData=======>', UserData)
+      if (!UserData) {
+        res.status(400).send({ data: null, message: "유저정보가 없는 토큰입니다." })
+      } else {
+        let userInfo = {
+          id: UserData.id,
+          userId: UserData.userId,
+          email: UserData.email,
+          createdAt: UserData.createdAt,
+          updatedAt: UserData.updatedAt
+        }
+        console.log(userInfo)
+        res.status(200).send({ data: { 'userInfo': userInfo }, message: 'ok' })
+      }
+      //헤더 authorizaion에 jwt 토큰이 있는 경우, 해당 유저의 정보를 리턴하자.
+
+    })
+    ```
+
+#### 장점
+
+무상태성 & 확장성
+
+- 서버는 클라이언트에 대한 정보를 저장할 필요가 없다.
+- 클라이언트는 새로운 요청을 보낼 때마다, 토큰을 헤더에 포함시키면 된다.
+- signature을 받은 토큰을 사용하고, 암호화 키를 노출할 필요가 없기 때문에 안전하다.
+- 어디서나 생성 가능하다
+- 권한 부여에 용이하다
