@@ -8,9 +8,7 @@ export default function Tweet({ username, photo, tweet }: ITweet) {
         <UserName>{username}</UserName>
         <Payload>{tweet}</Payload>
       </Colum>
-      <Colum>
-        <Photo src={photo} />
-      </Colum>
+      <Colum>{photo ? <Photo src={photo} /> : null}</Colum>
     </Wrapper>
   );
 }
