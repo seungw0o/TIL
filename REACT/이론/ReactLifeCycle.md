@@ -1,6 +1,6 @@
 # React Life Cycle (생명주기)
 
-![alt text](images_minbr0ther_post_7f8ed738-2f24-46bd-ab9f-2c7e7d7976e2_Untitled-3.png)
+<img src="images\images_minbr0ther_post_7f8ed738-2f24-46bd-ab9f-2c7e7d7976e2_Untitled-3.png"/>
 
 - `생성(mounting) -> 업데이트(updating) -> 제거(unmounting)` 의 생명주기를 갖는다.
 
