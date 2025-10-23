@@ -4,10 +4,10 @@ export const metadata: Metadata = {
   title: "Not Found",
 };
 
-export default function NotFound() {
+const NotFound = () => {
   return (
     <div>
       <h1>not found!!</h1>
     </div>
   );
-}
+};

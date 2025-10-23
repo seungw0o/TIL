@@ -10,7 +10,7 @@ interface IMovieProps {
   poster_path: string;
 }
 
-export const Movie = ({ title, id, poster_path }: IMovieProps) => {
+const Movie = ({ title, id, poster_path }: IMovieProps) => {
   const router = useRouter();
   const onClick = () => {
     router.push(`/movies/${id}`);
@@ -22,3 +22,5 @@ export const Movie = ({ title, id, poster_path }: IMovieProps) => {
     </div>
   );
 };
+
+export default Movie;

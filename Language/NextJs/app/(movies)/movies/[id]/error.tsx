@@ -1,5 +1,7 @@
 "use client";
 
-export default function Error() {
+const Error = () => {
   return <h1>lol error</h1>;
-}
+};
+
+export default Error;

@@ -4,11 +4,13 @@ export const metadata: Metadata = {
   title: "About-us ",
 };
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div>
       {children}
       &copy;Next Js is Great!
     </div>
   );
-}
+};
+
+export default Layout;

@@ -1,8 +1,9 @@
 import { API_URL } from "../../lib/constants";
 import { Movie } from "../../components/movie";
 import styles from "../../styles/home.module.css";
+import { Metadata } from "next";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Home",
 };
 
@@ -11,7 +12,7 @@ async function getMovies() {
   return fetch(API_URL).then(response => response.json());
 }
 
-export default async function HomePage() {
+const HomePage = async () => {
   const movies = await getMovies();
   return (
     <div className={styles.container}>
@@ -25,4 +26,6 @@ export default async function HomePage() {
       ))}
     </div>
   );
-}
+};
+
+export default HomePage;
