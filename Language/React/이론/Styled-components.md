@@ -46,7 +46,8 @@ function App() {
   return (
     <>
       <Button>OFF</Button>
-      <Button on>ON</Button> {/*on 값이 있기 때문에 배경색이 tomato 색으로 변한다*/}
+      <Button on>ON</Button>{" "}
+      {/*on 값이 있기 때문에 배경색이 tomato 색으로 변한다*/}
     </>
   );
 }

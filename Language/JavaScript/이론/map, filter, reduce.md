@@ -11,7 +11,6 @@
 - map 함수는 입력한 배열의 정보중 한조각을 받아 새로운 값을 반환한다.
 - 때로는 정보의 일부를 반환하기도 한다.
 - 또는 정보를 변형해서 새로운 값을 반환하기도 한다.
-
   - 예를 들어 모든 값을 대문자로 변환하거나 정수를 화폐 단위로 변환해서 새로운 배열로 반환 가능하다.
 
   ```jsx
@@ -24,7 +23,7 @@
 
   ```jsx
   const numbers = [1, 2, 3, 4];
-  const updatedNumbers = numbers.map((number) => {
+  const updatedNumbers = numbers.map(number => {
     return number * 2;
   });
   console.log(updatedNumbers);
@@ -48,7 +47,7 @@
     { id: 85, name: "William", age: 34, group: "editor" },
     { id: 97, name: "Oliver", age: 28, group: "admin" },
   ];
-  let res = users.filter((it) => it.name.includes("oli"));
+  let res = users.filter(it => it.name.includes("oli"));
   console.log(res);
   // res is []
   ```
@@ -61,7 +60,7 @@
     { name: "Watermelon", price: 20000 },
   ];
 
-  const chipFruits = fruits.filter((fruit) => {
+  const chipFruits = fruits.filter(fruit => {
     return fruit.price < 5000;
   });
   console.log(chipFruits);

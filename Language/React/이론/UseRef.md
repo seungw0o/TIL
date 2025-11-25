@@ -85,17 +85,17 @@ function InputSample() {
 
 이러한 특징은 다음과 같은 상황에서 유용합니다.
 
--   `setTimeout`이나 `setInterval`의 ID 값 저장
--   이전 상태 값 저장
--   스크롤 위치와 같은 외부 라이브러리 인스턴스 저장
--   렌더링과 관계 없는 계산 결과를 저장할 때
+- `setTimeout`이나 `setInterval`의 ID 값 저장
+- 이전 상태 값 저장
+- 스크롤 위치와 같은 외부 라이브러리 인스턴스 저장
+- 렌더링과 관계 없는 계산 결과를 저장할 때
 
 #### 예시: 렌더링 횟수 세기
 
 `useState`로 렌더링 횟수를 세려고 하면, `setCount`가 호출될 때마다 컴포넌트가 다시 렌더링되어 무한 루프에 빠지게 됩니다. `useRef`를 사용하면 이 문제를 해결할 수 있습니다.
 
 ```jsx
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from "react";
 
 function RenderCounter() {
   const [count, setCount] = useState(0);
@@ -110,11 +110,14 @@ function RenderCounter() {
   return (
     <div>
       <p>State: {count}</p>
-      <button onClick={() => setCount(c => c + 1)}>State 변경 (리렌더링)</button>
+      <button onClick={() => setCount(c => c + 1)}>
+        State 변경 (리렌더링)
+      </button>
     </div>
   );
 }
 ```
+
 - 위 컴포넌트에서 "State 변경" 버튼을 누를 때마다 `count` 상태가 바뀌어 리렌더링이 발생합니다.
 - `useEffect`는 렌더링이 완료될 때마다 실행되므로, `renderCount.current` 값을 1씩 증가시킵니다.
 - `renderCount`는 `ref` 객체이므로 `.current` 값을 바꿔도 리렌더링이 발생하지 않아 무한 루프 없이 렌더링 횟수를 안전하게 추적할 수 있습니다.
@@ -123,11 +126,11 @@ function RenderCounter() {
 
 ## `useState` vs `useRef`
 
-| 특징             | `useState`                               | `useRef`                                                    |
-| ---------------- | ---------------------------------------- | ----------------------------------------------------------- |
-| **값 변경 시**   | 컴포넌트 **리렌더링 발생**               | 리렌더링 **발생하지 않음**                                  |
-| **용도**         | 렌더링과 직접적으로 관련된 상태 값 관리  | DOM 참조, 렌더링과 무관한 값 저장 (타이머 ID, 이전 값 등) |
-| **값 접근**      | `state`                                  | `ref.current`                                               |
-| **값의 생애주기**| 다음 렌더링 시 새로운 값으로 대체        | 컴포넌트의 전체 생애주기 동안 유지                          |
+| 특징              | `useState`                              | `useRef`                                                  |
+| ----------------- | --------------------------------------- | --------------------------------------------------------- |
+| **값 변경 시**    | 컴포넌트 **리렌더링 발생**              | 리렌더링 **발생하지 않음**                                |
+| **용도**          | 렌더링과 직접적으로 관련된 상태 값 관리 | DOM 참조, 렌더링과 무관한 값 저장 (타이머 ID, 이전 값 등) |
+| **값 접근**       | `state`                                 | `ref.current`                                             |
+| **값의 생애주기** | 다음 렌더링 시 새로운 값으로 대체       | 컴포넌트의 전체 생애주기 동안 유지                        |
 
 `useRef`는 상태가 아닌, "컴포넌트의 기억 상자"와 같다고 생각하면 이해하기 쉽습니다. 렌더링에 영향을 주지 않으면서 무언가를 기억하고 싶을 때 사용합니다.

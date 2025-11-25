@@ -75,6 +75,7 @@ SSR의 이론 `'use client' 를 작성한 코드에서만 작동한다`
 ## Layout !
 
 - Layout는 컴포넌트를 `중복 사용하는 것`을 막아준다.
+
   ```tsx
   import Navigation from "../components/navigation";
 
@@ -104,6 +105,7 @@ SSR의 이론 `'use client' 를 작성한 코드에서만 작동한다`
 ### 여러개의 Layout
 
 - `Layout은 여러개 만들 수 있다.`
+
   ```bash
 
   파일 구조
@@ -117,6 +119,7 @@ SSR의 이론 `'use client' 를 작성한 코드에서만 작동한다`
   │
   │
   ```
+
   ```tsx
   // app/about-us/about-me/page.tsx에 접근한 예시
   <Layout>
@@ -125,6 +128,7 @@ SSR의 이론 `'use client' 를 작성한 코드에서만 작동한다`
     </AboutUsLayout>
   </Layout>
   ```
+
   `app/page.tsx` 에는 `app/layout.tsx` 만 나타나지만, `app/about-us/about-me/page.tsx` 에는 `app/layout.tsx` 와 `app/about-us/layout.tsx` 둘 다 나타나게 된다.
 
 ## Group Route ?

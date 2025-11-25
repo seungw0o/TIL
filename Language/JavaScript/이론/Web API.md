@@ -178,7 +178,6 @@ res.cookie("refreshToken", refreshToken, {
 5. 유효한 토큰이라면 요청에 응답한다.
 
 - Access Token과 Refresh Token을 모두 생성한다.
-
   - 토큰에 담길 정보는 유저를 식별할 정보, 권한이 부여된 카테고리가 될 수 있다.
   - 두 종류의 토큰이 같은 정보일 필요는 없다.
 
