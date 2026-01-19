@@ -20,27 +20,28 @@ if [[ -z "$SED_BIN" ]]; then
 fi
 
 generate_project_tree() {
-  # Only include theory directories (이론) and their Markdown files
-  LC_ALL=C LC_COLLATE=C LC_CTYPE=en_US.UTF-8 LANG=en_US.UTF-8 \
-  "$TREE_BIN" "$ROOT/Language" -f --dirsfirst --noreport --charset ascii -N \
-    --matchdirs -P "*이론*|*.md" --prune |
-    "$SED_BIN" -e 's/[|]-\+/┗━/g' \
-              -e 's/[|]/┃/g' \
-              -e 's/[`]/┗━/g' \
-              -e 's/[-]/━/g' \
-              -e "s:\(━ \)\(\(.*/\)\([^/]\+\)\):\1[**\4**](<\2>)</br>:g" \
-              -e "s:\[\*\*\(.*\)\.md\*\*\]:[\1]:g" \
-              -e "s=$ROOT/=./=g" \
-              -e "s=$ROOT=./TIL</br>=g" \
-              -e 's/━━━/━/g' \
-              -e 's/[ ]/　/g' \
-              -e ':a;s/\(<[^>]*\)　/\1 /g;ta'
+  # Find only '이론' directories under Language and render each tree
+  while IFS= read -r THEORY_DIR; do
+    LC_ALL=C LC_COLLATE=C LC_CTYPE=en_US.UTF-8 LANG=en_US.UTF-8 \
+    "$TREE_BIN" "$THEORY_DIR" -f --dirsfirst --noreport --charset ascii -N \
+      | sed '1d' \
+      | "$SED_BIN" -e 's/[|]-\+/┗━/g' \
+                    -e 's/[|]/┃/g' \
+                    -e 's/[`]/┗━/g' \
+                    -e 's/[-]/━/g' \
+                    -e "s:\(━ \)\(\(.*/\)\([^/]\+\)\):\1[**\4**](<\2>)</br>:g" \
+                    -e "s:\[\*\*\(.*\)\.md\*\*\]:[\1]:g" \
+                    -e "s=$ROOT/=./=g" \
+                    -e 's/━━━/━/g' \
+                    -e 's/[ ]/　/g' \
+                    -e ':a;s/\(<[^>]*\)　/\1 /g;ta'
+  done < <(find "$ROOT/Language" -type d -name "이론" | sort)
 }
 
 generate_readme() {
   cp -f "$template" "$readme"
   generate_project_tree |
-    LANG="UTF-8" perl -p0e 's/__PROJECT_TREE__/`cat`/se' -i "$readme"
+    LC_ALL=C LANG=C perl -p0e 's/__PROJECT_TREE__/`cat`/se' -i "$readme"
 }
 
 generate_readme
