@@ -1,34 +1,42 @@
 # Today I Learn
 
-공부한 내용을 올립니다
+공부한 내용을 올립니다.
 
-## 커밋 규칙
+## 구조
 
-- 커밋 메시지는 날짜만 입력합니다.
-  - 형식: `YYYY-MM-DD`
-  - 예시: `2025-11-25`
-
-- 커밋 방법:
-  - 직접 입력: `git commit -m '2025-11-25'`
-  - 자동 입력: `yarn commit:date` (스크립트 사용)
-
-- Prettier로 변경 파일을 자동 포맷합니다 (pre-commit).
-
-### 사용 방법
-
-- 자동 날짜 커밋:
-
-```zsh
-yarn commit
-```
-
-- 변경 파일 포맷팅 수동 실행:
-
-```zsh
-yarn format
-```
-
-### 훅 동작
-
-- `pre-commit`: `lint-staged`가 스테이징된 파일에 Prettier를 적용합니다.
-- `commit-msg`: 커밋 메시지가 Conventional Commits 규칙을 따르는지 검사합니다.
+/Users/jungseung━woo/Desktop/Projects/TIL/Language
+┗━　[**JavaScript**](/Users/jungseung━woo/Desktop/Projects/TIL/Language/JavaScript)</br>
+┃　　　┗━　[**이론**](/Users/jungseung━woo/Desktop/Projects/TIL/Language/JavaScript/이론)</br>
+┃　　　　　　　┗━　[Closure](/Users/jungseung━woo/Desktop/Projects/TIL/Language/JavaScript/이론/Closure.md)</br>
+┃　　　　　　　┗━　[Cookie](/Users/jungseung━woo/Desktop/Projects/TIL/Language/JavaScript/이론/Cookie.md)</br>
+┃　　　　　　　┗━　[EventLoop](/Users/jungseung━woo/Desktop/Projects/TIL/Language/JavaScript/이론/EventLoop.md)</br>
+┃　　　　　　　┗━　[Hoisting](/Users/jungseung━woo/Desktop/Projects/TIL/Language/JavaScript/이론/Hoisting.md)</br>
+┃　　　　　　　┗━　[SSR,　CSR](</Users/jungseung━woo/Desktop/Projects/TIL/Language/JavaScript/이론/SSR, CSR.md>)</br>
+┃　　　　　　　┗━　[Symbol](/Users/jungseung━woo/Desktop/Projects/TIL/Language/JavaScript/이론/Symbol.md)</br>
+┃　　　　　　　┗━　[Web　API](</Users/jungseung━woo/Desktop/Projects/TIL/Language/JavaScript/이론/Web API.md>)</br>
+┃　　　　　　　┗━　[map,　filter,　reduce](</Users/jungseung━woo/Desktop/Projects/TIL/Language/JavaScript/이론/map, filter, reduce.md>)</br>
+┃　　　　　　　┗━　[prototype](/Users/jungseung━woo/Desktop/Projects/TIL/Language/JavaScript/이론/prototype.md)</br>
+┃　　　　　　　┗━　[spread,　rest](</Users/jungseung━woo/Desktop/Projects/TIL/Language/JavaScript/이론/spread, rest.md>)</br>
+┃　　　　　　　┗━　[객체　메소드　&　계산된　프로퍼티](</Users/jungseung━woo/Desktop/Projects/TIL/Language/JavaScript/이론/객체 메소드 & 계산된 프로퍼티.md>)</br>
+┃　　　　　　　┗━　[동기&비동기](/Users/jungseung━woo/Desktop/Projects/TIL/Language/JavaScript/이론/동기&비동기.md)</br>
+┃　　　　　　　┗━　[브라우저　렌더링](</Users/jungseung━woo/Desktop/Projects/TIL/Language/JavaScript/이론/브라우저 렌더링.md>)</br>
+┃　　　　　　　┗━　[스크립트　로딩　전략](</Users/jungseung━woo/Desktop/Projects/TIL/Language/JavaScript/이론/스크립트 로딩 전략.md>)</br>
+┃　　　　　　　┗━　[실행　컨텍스트](</Users/jungseung━woo/Desktop/Projects/TIL/Language/JavaScript/이론/실행 컨텍스트.md>)</br>
+┃　　　　　　　┗━　[콜백　함수](</Users/jungseung━woo/Desktop/Projects/TIL/Language/JavaScript/이론/콜백 함수.md>)</br>
+┃　　　　　　　┗━　[템플릿　리터럴](</Users/jungseung━woo/Desktop/Projects/TIL/Language/JavaScript/이론/템플릿 리터럴.md>)</br>
+┗━　[**NextJs**](/Users/jungseung━woo/Desktop/Projects/TIL/Language/NextJs)</br>
+┃　　　┗━　[**Project**](/Users/jungseung━woo/Desktop/Projects/TIL/Language/NextJs/Project)</br>
+┃　　　┃　　　┗━　[README](/Users/jungseung━woo/Desktop/Projects/TIL/Language/NextJs/Project/README.md)</br>
+┃　　　┗━　[**이론**](/Users/jungseung━woo/Desktop/Projects/TIL/Language/NextJs/이론)</br>
+┃　　　　　　　┗━　[Next](/Users/jungseung━woo/Desktop/Projects/TIL/Language/NextJs/이론/Next.md)</br>
+┗━　[**React**](/Users/jungseung━woo/Desktop/Projects/TIL/Language/React)</br>
+┃　　　┗━　[**이론**](/Users/jungseung━woo/Desktop/Projects/TIL/Language/React/이론)</br>
+┃　　　　　　　┗━　[JSX](/Users/jungseung━woo/Desktop/Projects/TIL/Language/React/이론/JSX.md)</br>
+┃　　　　　　　┗━　[Props](/Users/jungseung━woo/Desktop/Projects/TIL/Language/React/이론/Props.md)</br>
+┃　　　　　　　┗━　[ReactLifeCycle](/Users/jungseung━woo/Desktop/Projects/TIL/Language/React/이론/ReactLifeCycle.md)</br>
+┃　　　　　　　┗━　[Styled━components](/Users/jungseung━woo/Desktop/Projects/TIL/Language/React/이론/Styled━components.md)</br>
+┃　　　　　　　┗━　[UseRef](/Users/jungseung━woo/Desktop/Projects/TIL/Language/React/이론/UseRef.md)</br>
+┃　　　　　　　┗━　[Websocket](/Users/jungseung━woo/Desktop/Projects/TIL/Language/React/이론/Websocket.md)</br>
+┗━　[**TypeScript**](/Users/jungseung━woo/Desktop/Projects/TIL/Language/TypeScript)</br>
+　　　　┗━　[제네릭](/Users/jungseung━woo/Desktop/Projects/TIL/Language/TypeScript/제네릭.md)</br>
+　　　　┗━　[타입스크립트를　쓰는　이유](</Users/jungseung━woo/Desktop/Projects/TIL/Language/TypeScript/타입스크립트를 쓰는 이유.md>)</br>
