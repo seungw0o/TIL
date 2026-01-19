@@ -27,7 +27,7 @@ generate_project_tree() {
 generate_readme() {
   cp -f "$template" "$readme"
   generate_project_tree |
-    LC_ALL=C LANG=C perl -p0e 's/__PROJECT_TREE__/`cat`/se' -i "$readme"
+    LC_ALL=C LANG=C perl -p0e 's/(?:__PROJECT_TREE__|\*\*PROJECT_TREE\*\*)/`cat`/se' -i "$readme"
 }
 
 generate_readme
