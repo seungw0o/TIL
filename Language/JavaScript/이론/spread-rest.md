@@ -16,7 +16,7 @@ console.log(spreadNumbers); // [1, 2, 3, 4, 5, 1000, 1, 2, 3, 4, 5]
 const purpleCuteSlime = {
   name: "슬라임",
   attribute: "cute",
-  color: "purple",
+  color: "purple"
 };
 
 const { color, ...rest } = purpleCuteSlime;

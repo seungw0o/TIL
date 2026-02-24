@@ -143,12 +143,12 @@ const jwt = require("jsonwebtoken");
 //access 토큰 발급
 const accessToken = jwt.sign(payload, accessSecret, {
   algorithm: "HS256",
-  expiresIn: "1h",
+  expiresIn: "1h"
 });
 //refresh 토큰 발급
 const refreshToken = jwt.sign(payload, refreshSecret, {
   algorithm: "HS256",
-  expiresIn: "14d",
+  expiresIn: "14d"
 });
 //클라이언트에서 받았을 때 access token은 그냥 응답하고, refresh token은 cookie에 담아서 보내준다. cookie에 담을 때는 쿠키 옵션을 포함해줘서 보낸다.
 
@@ -163,7 +163,7 @@ res.cookie("refreshToken", refreshToken, {
   maxAge: 24 * 6 * 60 * 10000,
   sameSite: "none",
   httpOnly: true,
-  secure: true,
+  secure: true
 });
 ```
 
@@ -187,11 +187,11 @@ res.cookie("refreshToken", refreshToken, {
     //access 토큰 발급
     const accessToken = jwt.sign(payload, accessSecret, {
       algorithm: "HS256",
-      expiresIn: "1h",
+      expiresIn: "1h"
     });
     const refreshToken = jwt.sign(payload, refreshSecret, {
       algorithm: "HS256",
-      expiresIn: "14d",
+      expiresIn: "14d"
     });
     ```
 
@@ -223,8 +223,8 @@ res.cookie("refreshToken", refreshToken, {
       withCredentials: true,
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${this.props.accessToken}`,
-      },
+        "Authorization": `Bearer ${this.props.accessToken}`
+      }
     });
     ```
 

@@ -23,7 +23,7 @@ import React, { useState, useRef } from "react";
 function InputSample() {
   const [inputs, setInputs] = useState({
     name: "",
-    nickname: "",
+    nickname: ""
   });
   const nameInput = useRef();
 
@@ -33,14 +33,14 @@ function InputSample() {
     const { value, name } = e.target; // 우선 e.target 에서 name 과 value 를 추출
     setInputs({
       ...inputs, // 기존의 input 객체를 복사한 뒤
-      [name]: value, // name 키를 가진 값을 value 로 설정
+      [name]: value // name 키를 가진 값을 value 로 설정
     });
   };
 
   const onReset = () => {
     setInputs({
       name: "",
-      nickname: "",
+      nickname: ""
     });
     // nameInput.current는 <input name="name" ... /> DOM 요소를 가리킵니다.
     nameInput.current.focus();

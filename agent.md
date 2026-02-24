@@ -53,6 +53,14 @@ TIL/
 | 코딩 테스트           | `CodingTest/<알고리즘>/<문제명>.md` |
 | JS/TS/React/Next 이론 | `Language/<기술>/이론/<주제>.md`    |
 
+### 파일 네이밍 규칙 (kebab-case)
+
+- **영어**: 소문자 + 하이픈 (`EventLoop.md` → `event-loop.md`, `Closure.md` → `closure.md`)
+- **영어 여러 단어**: 공백/쉼표 → 하이픈 (`call, apply, bind.md` → `call-apply-bind.md`)
+- **한국어**: 한글 유지, 공백/특수문자(`&`, `,`) → 하이픈 (`브라우저 렌더링.md` → `브라우저-렌더링.md`)
+- **약어**: 대문자 유지 (`SSR-CSR.md`, `web-API.md`)
+- `prototype.md` 같이 이미 소문자 단일 단어인 경우 그대로 유지
+
 ### 포맷 규칙
 
 - 제목은 `#`, `##`, `###` 계층 구조 사용
