@@ -110,7 +110,7 @@ const SendMessage = () => {
     roomId: roomId,
     sender: sender_nick,
     message: message,
-    createdAt: now,
+    createdAt: now
   };
   //예시 - 데이터 보낼때 json형식을 맞추어 보낸다.
   stomp.send("/pub/chat/message", token, JSON.stringify(data));

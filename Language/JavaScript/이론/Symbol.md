@@ -28,7 +28,7 @@ const id = Symbol("id");
 const user = {
   name: "Mike",
   age: 30,
-  [id]: "myid",
+  [id]: "myid"
 };
 
 console.log(user); // {name: "Mike", age: 30, Symbol(id): "myid"}
@@ -71,7 +71,7 @@ const id = Symbol("id");
 const user = {
   name: "Mike",
   age: 30,
-  [id]: "myid",
+  [id]: "myid"
 };
 
 Object.getOwnPropertySymbols(user); // [Symbol(id)]

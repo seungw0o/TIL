@@ -199,7 +199,7 @@ SSR의 이론 `'use client' 를 작성한 코드에서만 작동한다`
 // app/movies/[id]/page.tsx
 
 export default function MovieDetails({
-  params: { id }, // 구조분해할당
+  params: { id } // 구조분해할당
 }: {
   params: { id: string }; // 타입 설정
 }) {
@@ -246,7 +246,7 @@ export default function FirstPage() {
 
 ```tsx
 export const metadata = {
-  title: "Home",
+  title: "Home"
 };
 
 const URL = "https://nomad-movies.nomadcoders.workers.dev/movies";
@@ -295,7 +295,7 @@ async function getVideos(id: string) {
 }
 
 export default async function MoviesDetail({
-  params: { id },
+  params: { id }
 }: {
   params: { id: string };
 }) {
@@ -317,7 +317,7 @@ import MovieInfo from "../../../../components/movie-info";
 import MovieVideos from "../../../../components/movie-videos";
 
 export default async function MoviesDetail({
-  params: { id },
+  params: { id }
 }: {
   params: { id: string };
 }) {
@@ -365,9 +365,9 @@ import Navigation from "../components/navigation";
 export const metadata: Metadata = {
   title: {
     template: "%s | Next Movies",
-    default: "Next Movies",
+    default: "Next Movies"
   },
-  description: "The best Movies on the best framework",
+  description: "The best Movies on the best framework"
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {
@@ -423,17 +423,17 @@ export default function Navigation() {
 ```tsx
 // (home)/page.tsx
 export const metadata: Metadata = {
-  title: "Home",
+  title: "Home"
 };
 
 // movies/[id]/page.tsx
 export const generateMetadata = async ({
-  params,
+  params
 }: IParams): Promise<Metadata> => {
   const movie = await getMovie(params.id);
   // getMovie를 호출 하기 떄문에 캐싱 되어 다음 요청을 캐싱된 데이터를 사용한다
   return {
-    title: movie.title,
+    title: movie.title
   };
 };
 ```
