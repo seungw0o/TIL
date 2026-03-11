@@ -1,6 +1,6 @@
 # useRef
 
-`useRef`는 React에서 두 가지 주요 목적으로 사용되는 Hook입니다.
+`useRef`는 React에서 두 가지 주요 목적으로 사용되는 Hook이다.
 
 1.  **DOM 요소에 직접 접근 (DOM 참조)**
 2.  **컴포넌트의 생애주기 동안 유지되는, 리렌더링을 유발하지 않는 값 저장**
@@ -9,11 +9,11 @@
 
 ## 1. DOM 참조 (DOM Reference)
 
-JavaScript에서 `getElementById`나 `querySelector`를 사용해 DOM 요소에 접근하는 것처럼, React에서는 `ref`를 사용해 DOM 요소에 직접 접근할 수 있습니다. 함수형 컴포넌트에서는 `useRef` Hook을 사용합니다.
+JavaScript에서 `getElementById`나 `querySelector`를 사용해 DOM 요소에 접근하는 것처럼, React에서는 `ref`를 사용해 DOM 요소에 직접 접근할 수 있다. 함수형 컴포넌트에서는 `useRef` Hook을 사용한다.
 
-`useRef()`를 호출하여 `ref` 객체를 생성하고, 이 객체를 접근하고 싶은 DOM 요소의 `ref` 속성으로 설정합니다. 이렇게 하면 `ref` 객체의 `.current` 프로퍼티가 해당 DOM 요소를 가리키게 됩니다.
+`useRef()`를 호출하여 `ref` 객체를 생성하고, 이 객체를 접근하고 싶은 DOM 요소의 `ref` 속성으로 설정한다. 이렇게 하면 `ref` 객체의 `.current` 프로퍼티가 해당 DOM 요소를 가리키게 된다.
 
-이를 통해 특정 DOM 요소에 포커스를 주거나, 스크롤 위치를 제어하거나, DOM 요소의 크기나 위치를 가져오는 등의 작업을 할 수 있습니다.
+이를 통해 특정 DOM 요소에 포커스를 주거나, 스크롤 위치를 제어하거나, DOM 요소의 크기나 위치를 가져오는 등의 작업을 할 수 있다.
 
 #### 예시: 특정 input에 포커스하기
 
@@ -42,7 +42,7 @@ function InputSample() {
       name: "",
       nickname: ""
     });
-    // nameInput.current는 <input name="name" ... /> DOM 요소를 가리킵니다.
+    // nameInput.current는 <input name="name" ... /> DOM 요소를 가리킨다.
     nameInput.current.focus();
   };
 
@@ -71,19 +71,19 @@ function InputSample() {
 }
 ```
 
-- 위 예시에서 `useRef`로 `nameInput`이라는 `ref` 객체를 생성했습니다.
-- 이 객체를 이름 input의 `ref` 속성에 연결했습니다.
-- '초기화' 버튼을 누르면 `onReset` 함수가 실행되고, `nameInput.current.focus()`를 통해 이름 input에 포커스가 자동으로 이동합니다.
+- 위 예시에서 `useRef`로 `nameInput`이라는 `ref` 객체를 생성했다.
+- 이 객체를 이름 input의 `ref` 속성에 연결했다.
+- '초기화' 버튼을 누르면 `onReset` 함수가 실행되고, `nameInput.current.focus()`를 통해 이름 input에 포커스가 자동으로 이동한다.
 
 ---
 
 ## 2. 리렌더링 없는 값 저장 (Mutable Value Container)
 
-`useRef`의 또 다른 중요한 용도는 **리렌더링을 유발하지 않으면서** 컴포넌트의 전체 생애주기 동안 값을 유지하는 것입니다.
+`useRef`의 또 다른 중요한 용도는 **리렌더링을 유발하지 않으면서** 컴포넌트의 전체 생애주기 동안 값을 유지하는 것이다.
 
-`useState`는 값이 변경되면 컴포넌트를 리렌더링시키지만, `useRef`는 `.current` 프로퍼티의 값이 변경되어도 컴포넌트가 다시 렌더링되지 않습니다.
+`useState`는 값이 변경되면 컴포넌트를 리렌더링시키지만, `useRef`는 `.current` 프로퍼티의 값이 변경되어도 컴포넌트가 다시 렌더링되지 않는다.
 
-이러한 특징은 다음과 같은 상황에서 유용합니다.
+이러한 특징은 다음과 같은 상황에서 유용하다.
 
 - `setTimeout`이나 `setInterval`의 ID 값 저장
 - 이전 상태 값 저장
@@ -92,7 +92,7 @@ function InputSample() {
 
 #### 예시: 렌더링 횟수 세기
 
-`useState`로 렌더링 횟수를 세려고 하면, `setCount`가 호출될 때마다 컴포넌트가 다시 렌더링되어 무한 루프에 빠지게 됩니다. `useRef`를 사용하면 이 문제를 해결할 수 있습니다.
+`useState`로 렌더링 횟수를 세려고 하면, `setCount`가 호출될 때마다 컴포넌트가 다시 렌더링되어 무한 루프에 빠지게 된다. `useRef`를 사용하면 이 문제를 해결할 수 있다.
 
 ```jsx
 import React, { useState, useRef, useEffect } from "react";
@@ -102,9 +102,9 @@ function RenderCounter() {
   const renderCount = useRef(0);
 
   useEffect(() => {
-    // .current 값은 리렌더링을 유발하지 않습니다.
+    // .current 값은 리렌더링을 유발하지 않는다.
     renderCount.current = renderCount.current + 1;
-    console.log(`이 컴포넌트는 ${renderCount.current}번 렌더링되었습니다.`);
+    console.log(`이 컴포넌트는 ${renderCount.current}번 렌더링되었다.`);
   });
 
   return (
@@ -118,9 +118,9 @@ function RenderCounter() {
 }
 ```
 
-- 위 컴포넌트에서 "State 변경" 버튼을 누를 때마다 `count` 상태가 바뀌어 리렌더링이 발생합니다.
-- `useEffect`는 렌더링이 완료될 때마다 실행되므로, `renderCount.current` 값을 1씩 증가시킵니다.
-- `renderCount`는 `ref` 객체이므로 `.current` 값을 바꿔도 리렌더링이 발생하지 않아 무한 루프 없이 렌더링 횟수를 안전하게 추적할 수 있습니다.
+- 위 컴포넌트에서 "State 변경" 버튼을 누를 때마다 `count` 상태가 바뀌어 리렌더링이 발생한다.
+- `useEffect`는 렌더링이 완료될 때마다 실행되므로, `renderCount.current` 값을 1씩 증가시킨다.
+- `renderCount`는 `ref` 객체이므로 `.current` 값을 바꿔도 리렌더링이 발생하지 않아 무한 루프 없이 렌더링 횟수를 안전하게 추적할 수 있다.
 
 ---
 
@@ -133,4 +133,4 @@ function RenderCounter() {
 | **값 접근**       | `state`                                 | `ref.current`                                             |
 | **값의 생애주기** | 다음 렌더링 시 새로운 값으로 대체       | 컴포넌트의 전체 생애주기 동안 유지                        |
 
-`useRef`는 상태가 아닌, "컴포넌트의 기억 상자"와 같다고 생각하면 이해하기 쉽습니다. 렌더링에 영향을 주지 않으면서 무언가를 기억하고 싶을 때 사용합니다.
+`useRef`는 상태가 아닌, "컴포넌트의 기억 상자"와 같다고 생각하면 이해하기 쉽다. 렌더링에 영향을 주지 않으면서 무언가를 기억하고 싶을 때 사용한다.

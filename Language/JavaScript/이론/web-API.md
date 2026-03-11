@@ -24,7 +24,7 @@ localstorage.clear(); //전체 제거
 - 같은 URL을 다수의 탭/창에서 열면 각각의 탭/창에 새로운 sessionstorage를 생성함
 - 탭/창을 닫으면 세션이 끝나고, sessionstorage 안의 객체를 초기화함.
 
-- sessionStorage에 저장한 자료는 페이지 프로토콜별로 구분합니다. 특히 HTTP로 방문한 페이지에서 저장한 데이터는 같은 페이지의 HTTPS와는 다른 sessionStorage에 저장된다.
+- sessionStorage에 저장한 자료는 페이지 프로토콜별로 구분한다. 특히 HTTP로 방문한 페이지에서 저장한 데이터는 같은 페이지의 HTTPS와는 다른 sessionStorage에 저장된다.
 
 ### 예제
 
@@ -244,7 +244,7 @@ res.cookie("refreshToken", refreshToken, {
       })
       console.log('UserData=======>', UserData)
       if (!UserData) {
-        res.status(400).send({ data: null, message: "유저정보가 없는 토큰입니다." })
+        res.status(400).send({ data: null, message: "유저정보가 없는 토큰이다." })
       } else {
         let userInfo = {
           id: UserData.id,
