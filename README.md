@@ -32,3 +32,6 @@
 ┃ ┗━ [styled-components](./Language/React/이론/styled-components.md)</br>
 ┃ ┗━ [use-ref](./Language/React/이론/use-ref.md)</br>
 ┃ ┗━ [websocket](./Language/React/이론/websocket.md)</br>
+┗━ [TypeScript](./Language/TypeScript/)</br>
+┃ ┗━ [제네릭](./Language/TypeScript/이론/제네릭.md)</br>
+┃ ┗━ [타입스크립트를-쓰는-이유](./Language/TypeScript/이론/타입스크립트를-쓰는-이유.md)</br>

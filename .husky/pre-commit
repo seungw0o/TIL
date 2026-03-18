@@ -1,1 +1,2 @@
+yarn sync:meta
 yarn lint-staged

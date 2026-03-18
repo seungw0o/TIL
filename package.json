@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "husky",
-    "commit": "bash ./.scripts/generate_tree.sh && git commit -m \"$(date +%F)\"",
+    "sync:meta": "bash ./.scripts/generate_tree.sh && node ./.scripts/generate_agent.mjs",
+    "commit": "git commit -m \"$(date +%F)\"",
     "format": "prettier --write ."
   },
   "keywords": [],
