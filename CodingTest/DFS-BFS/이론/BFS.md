@@ -22,17 +22,22 @@ BFS는 큐 자료구조를 이용하며, 탐색 과정은 아래와 같다.
 from collections import deque
 
 def bfs(graph, start, visited):
+    # 탐색 시작 노드를 큐에 삽입하고 방문 처리
     queue = deque([start])
     visited[start] = True
 
     while queue:
+        # 큐에서 하나의 노드를 꺼내 출력
         v = queue.popleft()
         print(v, end=" ")
+
+        # 방문하지 않은 인접 노드를 모두 큐에 삽입
         for i in graph[v]:
             if not visited[i]:
                 queue.append(i)
                 visited[i] = True
 
+# 각 노드가 연결된 정보를 리스트로 표현
 graph = [
     [],
     [2, 3, 8],
@@ -45,7 +50,9 @@ graph = [
     [1, 7],
 ]
 
+# 각 노드의 방문 여부를 저장
 visited = [False] * 9
 
+# 1번 노드부터 탐색 시작
 bfs(graph, 1, visited)
 ```
