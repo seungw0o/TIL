@@ -2,15 +2,15 @@
 
 ## NEXT?
 
-Next는 `React기반 프레임워크`이다.
+Next는 `React 기반 프레임워크`이다.
 
 > 프레임워크 vs 라이브러리
 > `라이브러리` : 개발자가 직접 코드를 짜는 형태이다.
 > `프레임워크` : 규칙만 따르면 자동으로 코드를 짜준다.
 
-위 설명을 예로 들자면..
-React에서 첫번째 화면을 개발하기 위해서는 코드를 일일히 짜고 직접 경로를 설정하는 과정을 거쳐야 하지만
-Next는 app/page.tsx 라는 파일에 함수를 export하면? 알아서 코드를 짜준다.
+위 설명을 예로 들자면,
+React에서 첫 번째 화면을 개발하기 위해서는 코드를 일일이 짜고 직접 경로를 설정하는 과정을 거쳐야 한다.
+하지만 Next는 `app/page.tsx`라는 파일에 함수를 export하면 알아서 코드를 짜준다.
 
 ```tsx
 export default function FirstPage() {
@@ -21,35 +21,35 @@ export default function FirstPage() {
 
 ## Next의 라우팅 방식
 
-react의 경우 직접 url을 설정후 페이지를 라우팅 하는 방법으로 라우팅을 진행 했다.
-하지만 next의 경우 예를 들어 company/salses/page.tsx 는 [localhost:3000/company/sales](http://localhost:3000/company/sales) 를 뜻한다.
-이를 통해 알 수 있듯이 next는 파일만 만들고 약간의 규칙만 따른다면 라우팅을 쉽고 빠르게 할 수 있다.
+react의 경우 직접 url을 설정한 후 페이지를 라우팅하는 방식으로 진행했다.
+하지만 next의 경우 예를 들어 `company/salses/page.tsx`는 [localhost:3000/company/sales](http://localhost:3000/company/sales)를 뜻한다.
+이를 통해 알 수 있듯이 next는 파일만 만들고 약간의 규칙만 따르면 라우팅을 쉽고 빠르게 할 수 있다.
 
 ```tsx
 // 라우팅 방법 Link 태그 이용
 <Link href="/about-us">About-Us</Link>
 ```
 
-- Link 태그를 이용해 페이지 간 라우터를 더 쉽고 간편하게 쓸 수 있다. 혁신
+- `Link` 태그를 이용해 페이지 간 라우터를 더 쉽고 간편하게 쓸 수 있다.
 
 ## SSR ?
 
-`Server Side Rendering` 의 약자이며, next.js의 특징 중 하나이다.
+`Server Side Rendering`의 약자이며, next.js의 특징 중 하나이다.
 React가 사용하는 CSR(Client Side Rendering)과 다른 점을 가지고 있다.
 
 1. **빠른 초기 렌더링 속도**
-   - CSR을 사용하는 React의 경우 javascript가 파일을 다운로드하는 시간이 렌더링 과정에 포함되어 초기 렌더링이 느리다는 점이 있다. 하지만 SSR의 경우 서버 쪽에서 렌더링을 진행하기 때문에, 초기 렌더링이 굉장히 빠르게 된다.
-   - 또한 사용자가 페이지에 접근하든 안하든 서버에서 코드를 가져가 비동기적인 HTML로 변환 시켜 놓기 때문에 사용자는 페이지에 접속하자마자 UI를 볼 수 있다. 그 후 JavaScript를 다운로드 하여 동적이게 변하게 한다.
+   - CSR을 사용하는 React의 경우 JavaScript 파일을 다운로드하는 시간이 렌더링 과정에 포함되어 초기 렌더링이 느리다는 점이 있다. 하지만 SSR의 경우 서버 쪽에서 렌더링을 진행하기 때문에 초기 렌더링이 굉장히 빠르다.
+   - 또한 사용자가 페이지에 접근하든 안 하든 서버에서 코드를 가져가 비동기적인 HTML로 변환해 놓기 때문에, 사용자는 페이지에 접속하자마자 UI를 볼 수 있다. 그 후 JavaScript를 다운로드하여 동적으로 변하게 한다.
 2. **SEO**
-   - SEO는 검색엔진최적화를 뜻한다. CSR의 경우 초기 javascript가 다운로드 되기 전까지는 root div안에 아무런 코드가 없기 때문에 구글에서 페이지를 상단에 띄워주지 않는다. 하지만 SSR의 경우 서버에서 렌더링 하기 때문에 (즉 javascript를 비활성해도 페이지가 렌더링 됨) root div안에 코드가 존재하여 SEO가 편리하다는 점이 있다.
+   - SEO는 검색엔진최적화를 뜻한다. CSR의 경우 초기 JavaScript가 다운로드되기 전까지는 root div 안에 아무런 코드가 없기 때문에 구글에서 페이지를 상단에 띄워주지 않는다. 하지만 SSR의 경우 서버에서 렌더링하기 때문에, 즉 JavaScript를 비활성화해도 페이지가 렌더링되기 때문에 root div 안에 코드가 존재하여 SEO가 편리하다는 점이 있다.
 
 ## Hydrate
 
 SSR의 이론 `'use client' 를 작성한 코드에서만 작동한다`
 
-페이지가 로드되면 서버에서 렌더링 된 HTML 코드를 사용자가 받게 된다. 그 즉시 브라우저에서 React 와 같은 프레임워크가 init되며 페이지가 동적으로 변한다.
+페이지가 로드되면 서버에서 렌더링된 HTML 코드를 사용자가 받게 된다. 그 즉시 브라우저에서 React와 같은 프레임워크가 init되며 페이지가 동적으로 변한다.
 
-`use client` 를 작성하지 않은 파일에서는 hydrate가 되지 않아 동적으로 바뀌지 않는다. 이는 필요한 코드만 hydrate하기 때문에 페이지에 부담이 덜 가게 한다.
+`use client`를 작성하지 않은 파일에서는 hydrate가 되지 않아 동적으로 바뀌지 않는다. 이는 필요한 코드만 hydrate하기 때문에 페이지에 부담이 덜 가게 한다.
 
 ## Client Component & Server Component
 
@@ -64,11 +64,11 @@ SSR의 이론 `'use client' 를 작성한 코드에서만 작동한다`
 
 **Server Component**
 
-- 프레임워크를 동작 시키지 않기 때문에 브라우저에서 javascript를 다운로드 할 필요성이 없게 된다. 그로 인해 부하가 줄어들게 된다.
+- 프레임워크를 동작시키지 않기 때문에 브라우저에서 JavaScript를 다운로드할 필요가 없게 된다. 그로 인해 부하가 줄어들게 된다.
 
 ### 공통점
 
-- 두 Component 모두 `서버에서 렌더링` 된다는 점이 있다.
+- 두 Component 모두 `서버에서 렌더링`된다는 점이 있다.
 
 **두 Component 모두 backend에서 SSR로 렌더링 된다는 점을 잊지 말자. (use client는 client에서 렌더링 된다는게 아닌 client에서도 렌더링 될 수 있다는 뜻이다.)**
 
@@ -129,19 +129,19 @@ SSR의 이론 `'use client' 를 작성한 코드에서만 작동한다`
   </Layout>
   ```
 
-  `app/page.tsx` 에는 `app/layout.tsx` 만 나타나지만, `app/about-us/about-me/page.tsx` 에는 `app/layout.tsx` 와 `app/about-us/layout.tsx` 둘 다 나타나게 된다.
+  `app/page.tsx`에는 `app/layout.tsx`만 나타나지만, `app/about-us/about-me/page.tsx`에는 `app/layout.tsx`와 `app/about-us/layout.tsx` 둘 다 나타나게 된다.
 
 ## Group Route ?
 
-라우트를 그룹으로 묶을 수 있는 기능이다. 예를 들면 기존 `app/page.tsx`를 `app/(home)/page.tsx` 로 하여 page가 home에 속해있는 듯한 느낌을 주는 것을 말한다. 여기서 home을 괄호로 묶은 이유는 next는 폴더 이름으로 url을 생성하는데 폴더명이 괄호로 묶여 있다면 url을 생성하지 않기 때문이다.
+라우트를 그룹으로 묶을 수 있는 기능이다. 예를 들면 기존 `app/page.tsx`를 `app/(home)/page.tsx`로 두어 page가 home에 속해 있는 듯한 느낌을 주는 것을 말한다. 여기서 home을 괄호로 묶은 이유는 next는 폴더 이름으로 url을 생성하는데, 폴더명이 괄호로 묶여 있다면 url을 생성하지 않기 때문이다.
 
 ## Metadata ?
 
-프론트엔드를 공부했다면 metadata가 무엇인지는 알고 있을 것이다. next의 metadata는 기존에 사용하던 metadata와 조금 다르게 사용 할 수 있다.
+프론트엔드를 공부했다면 metadata가 무엇인지는 알고 있을 것이다. next의 metadata는 기존에 사용하던 metadata와 조금 다르게 사용할 수 있다.
 
 `metadata는 Server Component에서만 내보낼 수 있다는 것을 명시하자`
 
-1. **`먼저 각 layout에서 metadata를 설정 할 수 있다.` 기존의 react에서는 index.html 파일에 있던 metadata를 페이지 마다 다르게 설정 할 수 있다.**
+1. **`먼저 각 layout에서 metadata를 설정할 수 있다.` 기존의 react에서는 index.html 파일에 있던 metadata를 페이지마다 다르게 설정할 수 있다.**
 
    ```tsx
    // app/layout 의 metadata
@@ -178,8 +178,8 @@ SSR의 이론 `'use client' 를 작성한 코드에서만 작동한다`
 
 ### 동적 라우팅 vs 정적 라우팅
 
-- 동적 라우팅은 `movies/12` , `movies/12131` 와 같이 url에 변경할 수 있는 값이 들어가는 라우팅 방식이다
-- 정적 라우팅은 [localhost:3000/app](http://localhost:3000/app) , [localhost:3000/about-us](http://localhost:3000/about-us) 와 같이 변하지 않는 url 을 말한다.
+- 동적 라우팅은 `movies/12`, `movies/12131`와 같이 url에 변경할 수 있는 값이 들어가는 라우팅 방식이다.
+- 정적 라우팅은 [localhost:3000/app](http://localhost:3000/app), [localhost:3000/about-us](http://localhost:3000/about-us)와 같이 변하지 않는 url을 말한다.
 
 ### Next의 동적 라우팅
 
@@ -213,7 +213,7 @@ export default function MovieDetails({
 
 ## 기존의 연동 방식
 
-기존의 연동 방식은 직접 `로딩` 상태를 표현해야 했으며, `useState`, `useEffect` 를 사용해야 했기 때문에, `"use client"` 를 작성했어야 했다. 하지만 `"use client"` 를 사용하면 `metadata`를 사용 할 수 없다는 문제점이 존재한다.
+기존의 연동 방식은 직접 `로딩` 상태를 표현해야 했으며, `useState`, `useEffect`를 사용해야 했기 때문에 `"use client"`를 작성했어야 했다. 하지만 `"use client"`를 사용하면 `metadata`를 사용할 수 없다는 문제점이 존재한다.
 
 ```tsx
 "use client";
@@ -240,9 +240,9 @@ export default function FirstPage() {
 
 ## 서버 클라이언트 연동 방식
 
-이 연동 방식은 `useState` 와 `useEffect` 를 사용하지 않고 연동을 할 수 있다. 백엔드에서 실행하기 때문에, `metadata` 를 사용할 수 있으며, 코드도 간단하다. 이 연동 방식을 사용한다면 `loading` 상태는 UI로 나타나지 않는다. 백엔드 서버에서 연동이 되기 때문이다.
+이 연동 방식은 `useState`와 `useEffect`를 사용하지 않고 연동할 수 있다. 백엔드에서 실행하기 때문에 `metadata`를 사용할 수 있으며, 코드도 간단하다. 이 연동 방식을 사용한다면 `loading` 상태는 UI로 나타나지 않는다. 백엔드 서버에서 연동되기 때문이다.
 
-이 연동 방식의 단점으로는 연동이 다 되기 전까지 사용자는 아무것도 볼 수 없다는 점이 있다. next는 `SSR` 방식이기 때문에, 서버에서 렌더링 된 html을 사용자에게 전달하는데, 연동이 다 되기 전까지는 서버에서 이 작업을 하지 않는다.
+이 연동 방식의 단점은 연동이 다 되기 전까지 사용자는 아무것도 볼 수 없다는 점이다. next는 `SSR` 방식이기 때문에 서버에서 렌더링된 html을 사용자에게 전달하는데, 연동이 다 되기 전까지는 서버에서 이 작업을 하지 않는다.
 
 ```tsx
 export const metadata = {
@@ -271,9 +271,9 @@ export default function Loading() {
 }
 ```
 
-이러한 단점을 해결하기 위해서, 연동을 하는 파일이 있는 폴더에 `loading.tsx` 를 생성하여 사용자에게 loading 이라는 UI를 보여줄 수 있다. 그저 파일을 추가하는 것으로써 loading 을 보여주는걸 구현하는 것이다. next를 처음 하는 내 입장으로써는 굉장히 놀라운 점이다.
+이러한 단점을 해결하기 위해, 연동을 하는 파일이 있는 폴더에 `loading.tsx`를 생성해 사용자에게 loading이라는 UI를 보여줄 수 있다. 그저 파일을 추가하는 것만으로 loading을 보여주는 것을 구현하는 것이다. next를 처음 하는 입장에서는 굉장히 놀라운 점이다.
 
-이를 통해 next는 `페이지를 작은 html을 나누어서` 사용자에게 보여준다는 것을 알 수 있다. navigation 컴포넌트나 layout 같은 것을 보여주고 loading을 보여준다. 그 뒤 연동이 다 되었다면 연동의 결과를 보여준다.
+이를 통해 next는 `페이지를 작은 html로 나누어서` 사용자에게 보여준다는 것을 알 수 있다. navigation 컴포넌트나 layout 같은 것을 먼저 보여주고 loading을 보여준다. 그 뒤 연동이 다 되었다면 연동의 결과를 보여준다.
 
 ### 두개의 fetch()
 
@@ -307,7 +307,7 @@ export default async function MoviesDetail({
 }
 ```
 
-getMovie와 getVideos는 연동 하는데 5초의 시간이 걸린다. 그렇기 때문에 최소 10초의 연동 시간이 걸리는데 이를 해결하기 위해서 `Promise.all`을 사용한다. `Promise.all`은 `fetch`를 동시에 진행하기 때문에 연동을 최적화 할 수 있다.
+getMovie와 getVideos는 연동하는 데 5초의 시간이 걸린다. 그렇기 때문에 최소 10초의 연동 시간이 걸리는데, 이를 해결하기 위해 `Promise.all`을 사용한다. `Promise.all`은 `fetch`를 동시에 진행하기 때문에 연동을 최적화할 수 있다.
 
 ### 분할해서 연동하기
 
@@ -334,7 +334,7 @@ export default async function MoviesDetail({
 }
 ```
 
-`Promise.all`을 사용하여 연동을 할 경우에는 모든 연동이 완료되어야 결과를 받을 수 있다. 그로 인해 한가지 연동이 빨리 되어도 나머지 연동이 완료되지 않았다면, 결과를 얻을 수 없는 것이다. 그렇기 때문에 `Suspense`를 사용한다. Suspense의 `fallback props`는 해당 Suspense안의 연동이 끝나기 전까지 보여주는 UI를 설정 할 수 있다. 또한 연동을 분할 했기 때문에, 하나가 끝날때마다 결과를 얻을 수 있다. `Suspense`는 `next`가 아닌 `react`에 있음을 기억하자
+`Promise.all`을 사용하여 연동할 경우에는 모든 연동이 완료되어야 결과를 받을 수 있다. 그로 인해 한 가지 연동이 빨리 되어도 나머지 연동이 완료되지 않았다면 결과를 얻을 수 없는 것이다. 그렇기 때문에 `Suspense`를 사용한다. Suspense의 `fallback props`는 해당 Suspense 안의 연동이 끝나기 전까지 보여주는 UI를 설정할 수 있다. 또한 연동을 분할했기 때문에 하나가 끝날 때마다 결과를 얻을 수 있다. `Suspense`는 `next`가 아닌 `react`에 있음을 기억하자.
 
 ### error 처리
 
@@ -348,13 +348,13 @@ export default function Error() {
 }
 ```
 
-`error.tsx`를 생성해주면, movies/id 에서의 에러를 처리할 수 있다.
+`error.tsx`를 생성해 주면 `movies/id`에서의 에러를 처리할 수 있다.
 
 # **Deployment**
 
 ## **CSS Modules**
 
-Next에서의 css 적용 방법이다(.css 파일을 이용해서)
+Next에서의 css 적용 방법이다. `.css` 파일을 이용한다.
 
 ```tsx
 // app/layout.tsx
@@ -382,11 +382,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 }
 ```
 
-`import "../styles/global.css";` 이러한 방식으로 global.css를 페이지 전체에 적용할 수 있다. app/layout.tsx에 작성해야 페이지 전체에 적용할 수 있다는 것을 명심하자.
+`import "../styles/global.css";` 이런 방식으로 `global.css`를 페이지 전체에 적용할 수 있다. `app/layout.tsx`에 작성해야 페이지 전체에 적용할 수 있다는 것을 명심하자.
 
 ### 페이지 전체가 아닌 특정 페이지(컴포넌트)에서의 css 적용?
 
-global이 아닌 특정 요소의 css를 정의하기 위해서는 `module.css` 를 이용해야 한다.
+global이 아닌 특정 요소의 css를 정의하기 위해서는 `module.css`를 이용해야 한다.
 
 ```tsx
 // components/navigation.tsx
@@ -416,7 +416,7 @@ export default function Navigation() {
 }
 ```
 
-`import styles from "../styles/navigation.module.css";` 를 이용해서 `module.css` 를 import 해서 사용할 수 있다. 사용 방법은 `module.css` 에서 선언한 클래스 이름으로 사용할 수 있다.
+`import styles from "../styles/navigation.module.css";`를 이용해 `module.css`를 import해서 사용할 수 있다. 사용 방법은 `module.css`에서 선언한 클래스 이름으로 사용하는 것이다.
 
 ## **Dynamic Metadata**
 
@@ -438,11 +438,11 @@ export const generateMetadata = async ({
 };
 ```
 
-`generateMetadata` 를 이용하여 [id]와 같이 동적인 경로를 가진 페이지에서, 페이지의 내용(예: 특정 영화 제목)에 따라 <title> 태그나 <meta> 태그의 내용을 다르게 설정할 수 있다
+`generateMetadata`를 이용하여 `[id]`와 같이 동적인 경로를 가진 페이지에서, 페이지의 내용(예: 특정 영화 제목)에 따라 `<title>` 태그나 `<meta>` 태그의 내용을 다르게 설정할 수 있다.
 
 ## Prefetch
 
-`Link` 태그에 `prefetch`를 설정하면 nextJs는 유저가 `Link`를 클릭하기 전에 미리 `fetch` 해둔다
+`Link` 태그에 `prefetch`를 설정하면 nextJs는 유저가 `Link`를 클릭하기 전에 미리 `fetch`해 둔다.
 
 ```tsx
 const Movie = ({ title, id, poster_path }: IMovieProps) => {

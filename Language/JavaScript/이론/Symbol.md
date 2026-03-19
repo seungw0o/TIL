@@ -10,8 +10,8 @@ console.log(a === b); // false
 console.log(a == b); // false
 ```
 
-심볼에게 `설명`도 붙일 수 있다.
-이는 디버깅을 할 때 용이하다.
+심볼에는 `설명`도 붙일 수 있다.
+이는 디버깅할 때 용이하다.
 
 ```js
 const id1 = Symbol("id");
@@ -37,12 +37,12 @@ console.log(user[id]); // "myid"
 Object.keys(user); // ["name","age"] 가 나온다. Symbol은 나오지 않음
 ```
 
-이러한 심볼은 협업자가 만들어둔 객체에 새로운 프로퍼티를 추가하고 싶을 때 사용한다.
+이러한 심볼은 협업자가 만들어 둔 객체에 새로운 프로퍼티를 추가하고 싶을 때 사용한다.
 
 ## Symbol.for() : 전역 심볼
 
-- Symbol 함수는 매번 다른 Symbol 값을 생성하지만
-- Symbol.for 메소드는 하나를 생성한 뒤 키를 통해 같은 Symbol을 공유
+- Symbol 함수는 매번 다른 Symbol 값을 생성하지만,
+- Symbol.for 메소드는 하나를 생성한 뒤 키를 통해 같은 Symbol을 공유한다.
 
 ```js
 const id1 = Symbol.for("id");
@@ -56,14 +56,14 @@ Symbol.keyFor(id1); // "id"
 
 ## description
 
-Symbol의 설명을 확일할 수 있다.
+Symbol의 설명을 확인할 수 있다.
 
 ```js
 const id = Symbol("id 설명");
 id.description; // id 설명
 ```
 
-## Sysbol을 보는법
+## Sysbol을 보는 법
 
 ```js
 const id = Symbol("id");

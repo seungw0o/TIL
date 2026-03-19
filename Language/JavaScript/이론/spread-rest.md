@@ -1,7 +1,7 @@
 # spread?
 
-- spread 연산자이다. ...을 사용한다
-- spread 연산자를 사용할때는, [] 안에 사용해야 한다. (배열 안에서 써야 한다는 뜻)
+- spread 연산자이다. `...`을 사용한다.
+- spread 연산자를 사용할 때는 `[]` 안에 사용해야 한다. 배열 안에서 써야 한다는 뜻이다.
 
 ```jsx
 const numbers = [1, 2, 3, 4, 5];
@@ -24,4 +24,4 @@ console.log(color);
 console.log(rest);
 ```
 
-- 위에서 쓴 rest를 보면 앞에 사용된 color, 를 제외한 값등을 purpleCuteSlime에 사용한 것이다.
+- 위의 rest 예제에서는 앞에서 사용한 color를 제외한 값들을 purpleCuteSlime에 사용한 것이다.
