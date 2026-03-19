@@ -153,10 +153,11 @@ yarn format   # 전체 파일 Prettier 포맷
 ## README.md 자동 생성
 
 - 루트 `README.md`는 `.scripts/readme_template.md` + `.scripts/generate_tree.sh`로 생성됨
-- `Language/**/이론/` 디렉토리 바로 아래 있는 `.md` 파일만 루트 README 트리에 포함됨
-- `Books/`, `CS/`, `CodingTest/`, `Language/NextJs/Project/README.md`는 루트 README 트리에 포함되지 않음
+- `Books/*.md`, `CS/*.md`, `CodingTest/**/*.md`, `Language/*/이론/*.md`가 루트 README 트리에 포함됨
+- `CodingTest`는 중첩 디렉토리 구조를 유지한 채 재귀적으로 렌더링됨 (`문제/`, `이론/`, 세부 분류 포함)
+- `Language/NextJs/Project/**`, `Language/HTML/**`, `Language/CSS/**` 같은 프로젝트/비마크다운 영역은 루트 README 트리에서 제외됨
 - **직접 수정 금지** - 수정해도 다음 `yarn commit` 또는 스크립트 실행 시 덮어씌워짐
-- 새 이론 파일을 `Language/*/이론/`에 추가하면 README 생성 대상에 포함됨
+- 새 파일을 `Books`, `CS`, `CodingTest`, `Language/*/이론/` 규칙에 맞게 추가하면 README 생성 대상에 포함됨
 
 ---
 
@@ -167,7 +168,7 @@ yarn format   # 전체 파일 Prettier 포맷
 1. 카테고리에 맞는 경로에 파일 생성
 2. `# 제목`으로 시작하고 한국어 서술체로 작성
 3. 코드 예시, 핵심 개념, 예외 사항을 필요한 만큼 포함
-4. `Language/*/이론/` 경로에 생성하는 경우 루트 README 자동 생성 대상임을 안내
+4. `Books`, `CS`, `CodingTest`, `Language/*/이론/` 경로에 생성하는 경우 루트 README 자동 생성 대상임을 안내
 
 ### 기존 파일 내용 보완 요청 시
 
@@ -179,7 +180,7 @@ yarn format   # 전체 파일 Prettier 포맷
 ### 파일 이동/삭제 시
 
 - `mv` 명령어 사용
-- `Language/*/이론/` 경로 변경 시 README 트리에 미치는 영향 확인
+- `Books`, `CS`, `CodingTest`, `Language/*/이론/` 경로 변경 시 README 트리에 미치는 영향 확인
 - `CodingTest`는 `문제/`, `이론/`, 세부 분류 디렉토리 구조를 유지한 채 이동 여부를 판단
 
 ---
