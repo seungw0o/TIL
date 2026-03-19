@@ -10,7 +10,7 @@ const spreadNumbers = [...numbers, 1000, ...numbers];
 console.log(spreadNumbers); // [1, 2, 3, 4, 5, 1000, 1, 2, 3, 4, 5]
 ```
 
-# rest?
+## rest?
 
 ```jsx
 const purpleCuteSlime = {
@@ -24,4 +24,4 @@ console.log(color);
 console.log(rest);
 ```
 
-- 위의 rest 예제에서는 앞에서 사용한 color를 제외한 값들을 purpleCuteSlime에 사용한 것이다.
+- 위의 rest 예제에서는 앞에서 사용한 `color`를 제외한 값들을 `purpleCuteSlime`에 사용한 것이다.

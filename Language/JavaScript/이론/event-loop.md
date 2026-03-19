@@ -2,7 +2,7 @@
 
 ## Event Loop의 시각적 표현
 
-<img src='https://developer.mozilla.org/ko/docs/Web/JavaScript/Event_loop/the_javascript_runtime_environment_example.svg' alt='Event Loop'>;
+<img src='https://developer.mozilla.org/ko/docs/Web/JavaScript/Event_loop/the_javascript_runtime_environment_example.svg' alt='Event Loop'>
 
 ## Stack
 
@@ -64,8 +64,6 @@
 - 하지만 메시지가 큐에 처리되기 위해 진행되는 과정은 비동기적으로 진행된다.
 
 ---
-
-  </br>
 
 - 이 특징은 프로그램의 동작을 추론할 때 유용한 특성을 제공한다. 실행한 함수가 다른 작업에 의해 선점될 일이 없고, 다른 모든 코드의 실행보다 우선해서 값을 변경할 수 있다. 왜냐하면 중단되는 일 없이 완전히 끝나기 때문이다. 반면 C언어에서는 스레드에서 실행 중인 함수를 런타임 시스템이 임의로 중단시키고, 다른 스레드의 다른 코드를 실행시킬 수 있다.
 

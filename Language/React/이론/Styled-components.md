@@ -31,7 +31,7 @@ function App() {
 export default App;
 ```
 
-### props를 전달 해보자
+### props를 전달해 보자
 
 - styled-components를 잘 보면 백틱으로 감싸져 있다. 그렇기 때문에 값을 전달하려면 `${}`를 사용해야 한다.
 

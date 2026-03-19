@@ -8,7 +8,7 @@
 
 ## 하지만?
 
-- 웹소켓은 statefull하여 매번 요청을 보내는 것이 아니라, 한 번의 요청으로 handShake 과정을 거쳐 연결을 유지한다. 그래서 양방향 통신이 가능해진다.
+- 웹소켓은 stateful하여 매번 요청을 보내는 것이 아니라, 한 번의 요청으로 handshake 과정을 거쳐 연결을 유지한다. 그래서 양방향 통신이 가능해진다.
 
 ### 특징
 
@@ -63,19 +63,19 @@
 ```jsx
 import SockJs from "sockjs-client";
 import StompJs from "stompjs";
-//stomp와 sockjs 패키지로 깔고 임포트!!
+// stomp와 sockjs 패키지로 설치하고 import
 
 const sock = new SockJs("http://서버주소");
-//client 객체 생성 및 서버주소 입력
+// client 객체 생성 및 서버 주소 입력
 
 const stomp = StompJs.over(sock);
-//stomp로 감싸기
+// stomp로 감싸기
 
 const stompConnect = () => {
   try {
     stomp.debug = null;
-    //웹소켓 연결시 stomp에서 자동으로 connect이 되었다는것을
-    //console에 보여주는데 그것을 감추기 위한 debug
+    // 웹소켓 연결 시 stomp에서 자동으로 connect되었다는 것을
+    // console에 보여주는데, 그것을 감추기 위한 debug
 
     stomp.connect(token, () => {
       stomp.subscribe(
@@ -90,7 +90,7 @@ const stompConnect = () => {
   } catch (err) {}
 };
 
-//웹소켓 connect-subscribe 부분
+// 웹소켓 connect-subscribe 부분
 
 const stompDisConnect = () => {
   try {
@@ -100,8 +100,8 @@ const stompDisConnect = () => {
     }, token);
   } catch (err) {}
 };
-//웹소켓 disconnect-unsubscribe 부분
-// 웹소켓을 disconnect을 따로 해주지 않으면 계속 연결되어 있어서 사용하지 않을때는 꼭 연결을 끊어주어야한다.
+// 웹소켓 disconnect-unsubscribe 부분
+// 웹소켓을 따로 disconnect해 주지 않으면 계속 연결되어 있어서 사용하지 않을 때는 꼭 연결을 끊어주어야 한다.
 
 const SendMessage = () => {
   stomp.debug = null;
@@ -112,10 +112,10 @@ const SendMessage = () => {
     message: message,
     createdAt: now
   };
-  //예시 - 데이터 보낼때 json형식을 맞추어 보낸다.
+  // 예시 - 데이터를 보낼 때 JSON 형식에 맞추어 보낸다.
   stomp.send("/pub/chat/message", token, JSON.stringify(data));
 };
-//웹소켓 데이터 전송 부분
+// 웹소켓 데이터 전송 부분
 ```
 
 #### stomp의 흐름

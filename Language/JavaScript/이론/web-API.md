@@ -1,6 +1,6 @@
 # Web API
 
-## Local storage
+## Local Storage
 
 - 정보가 계속 유지된다.
 - 데이터가 만료되지 않는다.
@@ -8,28 +8,28 @@
 ### 예제
 
 ```jsx
-localstorage.setItem("key", "value"); // value는 string이여야 함
+localStorage.setItem("key", "value"); // value는 string이어야 함
 // setItem은 등록을, getItem은 읽는 것을 담당함
-localstorage.getItem("key");
-localstorage.removeItem("key"); // 제거를 담당
-localstorage.clear(); // 전체 제거
+localStorage.getItem("key");
+localStorage.removeItem("key"); // 제거를 담당
+localStorage.clear(); // 전체 제거
 ```
 
-## Session storage
+## Session Storage
 
 - 페이지 세션이 끝날 때, 정보가 사라진다.
 
 - 브라우저가 열려있는 한 새로고침과 페이지 복구를 거쳐도 남아있다.
-- 페이지를 새로운 탭이나 창에서 열면 최상위 브라우징 맥락의 값을 가진 새로운 세션을 생성함
-- 같은 URL을 다수의 탭/창에서 열면 각각의 탭/창에 새로운 sessionStorage를 생성함
-- 탭/창을 닫으면 세션이 끝나고, sessionstorage 안의 객체를 초기화함.
+- 페이지를 새로운 탭이나 창에서 열면 최상위 브라우징 맥락의 값을 가진 새로운 세션을 생성한다.
+- 같은 URL을 다수의 탭/창에서 열면 각각의 탭/창에 새로운 `sessionStorage`를 생성한다.
+- 탭/창을 닫으면 세션이 끝나고, `sessionStorage` 안의 객체를 초기화한다.
 
 - sessionStorage에 저장한 자료는 페이지 프로토콜별로 구분한다. 특히 HTTP로 방문한 페이지에서 저장한 데이터는 같은 페이지의 HTTPS와는 다른 sessionStorage에 저장된다.
 
 ### 예제
 
 ```jsx
-// sessionStorage 객체에 접근 후, Storag.setItem()을 사용해 항목 하나를 추가한다.
+// sessionStorage 객체에 접근 후, Storage.setItem()을 사용해 항목 하나를 추가한다.
 sessionStorage.setItem("myCat", "Tom");
 ```
 
@@ -72,18 +72,18 @@ field.addEventListener("change", function () {
 - 해커가 세션 ID를 중간에 탈취하여 클라이언트인 척 위장할 수 있다.
 - 서버에서 세션 저장소를 사용하기 때문에, 요청이 많아지면 서버에 부하가 생긴다.
 
-## cokie
+## Cookie
 
 <a href="https://github.com/seungw0o/TIL/blob/main/JS%20STUDY/%EC%9D%B4%EB%A1%A0/Cookie.md"> Cookie.md </a>
 
-## token
+## Token
 
 ### JWT
 
 - Json Web Token의 약자로 Web에서 쓰이는 Json Token이다.
 - 인증에 필요한 정보들을 암호화 시킨 토큰이다.
 - 쿠키/세션 방식과 유사하게 `JWT 토큰(Access Token)`을 `HTTP 헤더에` 실어 서버가 클라를 식별한다.
-- JWT는 `Header`,`Payload`,`Signature`로 이루어져 있다.
+- JWT는 `Header`, `Payload`, `Signature`로 이루어져 있다.
 
 #### Header
 
