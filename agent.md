@@ -28,11 +28,7 @@ TIL/
 │   │   ├── 문제/ # DFS/BFS 관련 문제 풀이
 │   │   └── 이론/ # DFS/BFS 이론 정리
 │   └── Graph/ # 그래프 관련 학습
-│       ├── Kruskal/
-│       │   ├── 문제/
-│       │   └── 이론/
 │       └── UnionFind/ # Union-Find 관련 학습
-│           ├── 문제/
 │           └── 이론/ # Union-Find 이론 정리
 ├── Language/ # 언어/프레임워크별 학습 내용
 │   ├── CSS/ # CSS 실습 파일
@@ -80,7 +76,7 @@ TIL/
 <!-- AUTO-GENERATED:PATH_EXAMPLES:START -->
 
 - 현재 예시
-  - `CodingTest/DFS-BFS/문제/미로-탈출.md`
+  - `CodingTest/DFS-BFS/문제/음료수-얼려-먹기.md`
   - `CodingTest/DFS-BFS/이론/BFS.md`
   - `CodingTest/Graph/UnionFind/이론/union-find.md`
   - `Language/TypeScript/이론/제네릭.md`
@@ -156,6 +152,7 @@ yarn format   # 전체 파일 Prettier 포맷
 - `Books/*.md`, `CS/*.md`, `CodingTest/**/*.md`, `Language/*/이론/*.md`가 루트 README 트리에 포함됨
 - `CodingTest`는 중첩 디렉토리 구조를 유지한 채 재귀적으로 렌더링됨 (`문제/`, `이론/`, 세부 분류 포함)
 - `Language/NextJs/Project/**`, `Language/HTML/**`, `Language/CSS/**` 같은 프로젝트/비마크다운 영역은 루트 README 트리에서 제외됨
+- commit hook에서 실행되는 메타 동기화는 working tree가 아니라 `git index` 기준으로 생성되므로, unstaged 파일은 README/agent 자동 반영 대상에 포함되지 않음
 - **직접 수정 금지** - 수정해도 다음 `yarn commit` 또는 스크립트 실행 시 덮어씌워짐
 - 새 파일을 `Books`, `CS`, `CodingTest`, `Language/*/이론/` 규칙에 맞게 추가하면 README 생성 대상에 포함됨
 

@@ -5,6 +5,16 @@ import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const agentPath = path.join(root, "agent.md");
+const useIndex = process.env.SYNC_META_USE_INDEX === "1";
+const trackedPaths = useIndex
+  ? execFileSync("git", ["ls-files", "--cached", "-z"], {
+      cwd: root,
+      encoding: "buffer"
+    })
+      .toString("utf8")
+      .split("\u0000")
+      .filter(Boolean)
+  : null;
 
 const commentMap = {
   "Books": "책 정리 및 독후감",
@@ -72,7 +82,62 @@ function normalizeRel(relPath) {
   return relPath.split(path.sep).join("/");
 }
 
+function trackedPathExists(relPath) {
+  return trackedPaths.some(
+    trackedPath =>
+      trackedPath === relPath || trackedPath.startsWith(`${relPath}/`)
+  );
+}
+
 function listEntries(relPath, options = {}) {
+  if (useIndex) {
+    const { includeFiles = false } = options;
+    const prefix = relPath ? `${relPath}/` : "";
+    const entryMap = new Map();
+
+    for (const trackedPath of trackedPaths) {
+      if (
+        relPath &&
+        !(trackedPath === relPath || trackedPath.startsWith(prefix))
+      ) {
+        continue;
+      }
+
+      if (!relPath && trackedPath.startsWith(".")) {
+        // keep hidden root entries; handled below
+      }
+
+      const remainder = relPath
+        ? trackedPath.slice(prefix.length)
+        : trackedPath;
+      if (!remainder || (remainder === trackedPath && relPath)) {
+        continue;
+      }
+
+      const [entryName, ...rest] = remainder.split("/");
+      if (!entryName || entryName === ".DS_Store") {
+        continue;
+      }
+
+      const isDirectory = rest.length > 0;
+      if (!isDirectory && !includeFiles) {
+        continue;
+      }
+
+      const entryRelPath = relPath ? `${relPath}/${entryName}` : entryName;
+      const prev = entryMap.get(entryName);
+      entryMap.set(entryName, {
+        name: entryName,
+        isDirectory: prev?.isDirectory || isDirectory,
+        relPath: entryRelPath
+      });
+    }
+
+    return [...entryMap.values()].sort((a, b) =>
+      a.name.localeCompare(b.name, "en")
+    );
+  }
+
   const absPath = path.join(root, relPath);
   if (!fs.existsSync(absPath) || !fs.statSync(absPath).isDirectory()) {
     return [];
@@ -140,10 +205,15 @@ function buildChildren(relPath, depthRemaining) {
 
 function buildRootTree() {
   return rootOrder
-    .filter(entry => fs.existsSync(path.join(root, entry)))
+    .filter(entry =>
+      useIndex
+        ? trackedPathExists(entry)
+        : fs.existsSync(path.join(root, entry))
+    )
     .map(entry => {
-      const absPath = path.join(root, entry);
-      const isDirectory = fs.statSync(absPath).isDirectory();
+      const isDirectory = useIndex
+        ? trackedPaths.some(trackedPath => trackedPath.startsWith(`${entry}/`))
+        : fs.statSync(path.join(root, entry)).isDirectory();
       return {
         name: entry,
         relPath: entry,
@@ -183,6 +253,14 @@ function buildStructureBlock() {
 }
 
 function walkFiles(startRelPath, matcher) {
+  if (useIndex) {
+    return trackedPaths
+      .filter(
+        relPath => relPath.startsWith(`${startRelPath}/`) && matcher(relPath)
+      )
+      .sort((a, b) => a.localeCompare(b, "en"));
+  }
+
   const startAbsPath = path.join(root, startRelPath);
   const results = [];
 

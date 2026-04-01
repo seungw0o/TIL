@@ -1,2 +1,2 @@
-yarn sync:meta
+SYNC_META_USE_INDEX=1 yarn sync:meta
 yarn lint-staged
