@@ -28,6 +28,8 @@ TIL/
 │   │   ├── 문제/ # DFS/BFS 관련 문제 풀이
 │   │   └── 이론/ # DFS/BFS 이론 정리
 │   └── Graph/ # 그래프 관련 학습
+│       ├── Kruskal/
+│       │   └── 이론/
 │       └── UnionFind/ # Union-Find 관련 학습
 │           └── 이론/ # Union-Find 이론 정리
 ├── Language/ # 언어/프레임워크별 학습 내용
@@ -78,7 +80,7 @@ TIL/
 - 현재 예시
   - `CodingTest/DFS-BFS/문제/음료수-얼려-먹기.md`
   - `CodingTest/DFS-BFS/이론/BFS.md`
-  - `CodingTest/Graph/UnionFind/이론/union-find.md`
+  - `CodingTest/Graph/Kruskal/이론/Kruskal.md`
   - `Language/TypeScript/이론/제네릭.md`
   <!-- AUTO-GENERATED:PATH_EXAMPLES:END -->
 
@@ -187,7 +189,7 @@ yarn format   # 전체 파일 Prettier 포맷
 - `.gitignore`에 `node_modules/`, `.yarn/cache` 등 포함
 - Next.js 실습 프로젝트는 `Language/NextJs/Project/`에 위치하며 별도의 `package.json`을 가짐
 <!-- AUTO-GENERATED:CODINGTEST_SUMMARY:START -->
-- `CodingTest`는 현재 `DFS-BFS`, `Graph/UnionFind` 구조를 사용 중이며 이후 더 확장될 수 있음
+- `CodingTest`는 현재 `DFS-BFS`, `Graph/Kruskal`, `Graph/UnionFind` 구조를 사용 중이며 이후 더 확장될 수 있음
 <!-- AUTO-GENERATED:CODINGTEST_SUMMARY:END -->
 - `agent.md`의 구조 관련 일부 블록은 `.scripts/generate_agent.mjs`와 commit hook으로 자동 동기화됨
 - 루트 `README.md`는 학습 이론 노트 목록용이며 저장소 전체 인덱스는 아님

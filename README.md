@@ -18,6 +18,9 @@
 ┃ ┃ ┃ ┗━ [BFS](./CodingTest/DFS-BFS/이론/BFS.md)</br>
 ┃ ┃ ┃ ┗━ [DFS](./CodingTest/DFS-BFS/이론/DFS.md)</br>
 ┃ ┗━ [Graph](./CodingTest/Graph/)</br>
+┃ ┃ ┗━ [Kruskal](./CodingTest/Graph/Kruskal/)</br>
+┃ ┃ ┃ ┗━ [이론](./CodingTest/Graph/Kruskal/이론/)</br>
+┃ ┃ ┃ ┃ ┗━ [Kruskal](./CodingTest/Graph/Kruskal/이론/Kruskal.md)</br>
 ┃ ┃ ┗━ [UnionFind](./CodingTest/Graph/UnionFind/)</br>
 ┃ ┃ ┃ ┗━ [이론](./CodingTest/Graph/UnionFind/이론/)</br>
 ┃ ┃ ┃ ┃ ┗━ [union-find](./CodingTest/Graph/UnionFind/이론/union-find.md)</br>
