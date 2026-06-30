@@ -78,7 +78,7 @@ TIL/
 <!-- AUTO-GENERATED:PATH_EXAMPLES:START -->
 
 - 현재 예시
-  - `CodingTest/DFS-BFS/문제/음료수-얼려-먹기.md`
+  - `CodingTest/DFS-BFS/문제/미로-탈출.md`
   - `CodingTest/DFS-BFS/이론/BFS.md`
   - `CodingTest/Graph/Kruskal/이론/Kruskal.md`
   - `Language/TypeScript/이론/제네릭.md`

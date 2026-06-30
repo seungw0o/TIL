@@ -13,6 +13,7 @@
 ┗━ [CodingTest](./CodingTest/)</br>
 ┃ ┗━ [DFS-BFS](./CodingTest/DFS-BFS/)</br>
 ┃ ┃ ┗━ [문제](./CodingTest/DFS-BFS/문제/)</br>
+┃ ┃ ┃ ┗━ [미로-탈출](./CodingTest/DFS-BFS/문제/미로-탈출.md)</br>
 ┃ ┃ ┃ ┗━ [음료수-얼려-먹기](./CodingTest/DFS-BFS/문제/음료수-얼려-먹기.md)</br>
 ┃ ┃ ┗━ [이론](./CodingTest/DFS-BFS/이론/)</br>
 ┃ ┃ ┃ ┗━ [BFS](./CodingTest/DFS-BFS/이론/BFS.md)</br>
